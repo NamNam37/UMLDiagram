@@ -32,8 +32,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button_AddClass = new System.Windows.Forms.Button();
             this.button_RemoveClass = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_EditClass = new System.Windows.Forms.Button();
+            this.button_ClearPicbox = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -45,13 +45,13 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(130, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(140, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1010, 528);
+            this.pictureBox1.Size = new System.Drawing.Size(1000, 528);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
+            this.pictureBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDoubleClick);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
@@ -76,23 +76,26 @@
             this.button_RemoveClass.UseVisualStyleBackColor = true;
             this.button_RemoveClass.Click += new System.EventHandler(this.button_RemoveClass_Click);
             // 
-            // button3
+            // button_EditClass
             // 
-            this.button3.Location = new System.Drawing.Point(12, 70);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_EditClass.Location = new System.Drawing.Point(12, 70);
+            this.button_EditClass.Name = "button_EditClass";
+            this.button_EditClass.Size = new System.Drawing.Size(112, 23);
+            this.button_EditClass.TabIndex = 3;
+            this.button_EditClass.Text = "Edit Class";
+            this.button_EditClass.UseVisualStyleBackColor = true;
+            this.button_EditClass.Click += new System.EventHandler(this.button_EditClass_Click);
             // 
-            // button4
+            // button_ClearPicbox
             // 
-            this.button4.Location = new System.Drawing.Point(12, 99);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(112, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_ClearPicbox.BackColor = System.Drawing.Color.OrangeRed;
+            this.button_ClearPicbox.Location = new System.Drawing.Point(12, 99);
+            this.button_ClearPicbox.Name = "button_ClearPicbox";
+            this.button_ClearPicbox.Size = new System.Drawing.Size(112, 23);
+            this.button_ClearPicbox.TabIndex = 4;
+            this.button_ClearPicbox.Text = "Clear ALL";
+            this.button_ClearPicbox.UseVisualStyleBackColor = false;
+            this.button_ClearPicbox.Click += new System.EventHandler(this.button_ClearPicbox_Click);
             // 
             // button5
             // 
@@ -155,13 +158,13 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button_ClearPicbox);
+            this.Controls.Add(this.button_EditClass);
             this.Controls.Add(this.button_RemoveClass);
             this.Controls.Add(this.button_AddClass);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "UML Diagram Maker";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -172,8 +175,8 @@
         private PictureBox pictureBox1;
         private Button button_AddClass;
         private Button button_RemoveClass;
-        private Button button3;
-        private Button button4;
+        private Button button_EditClass;
+        private Button button_ClearPicbox;
         private Button button5;
         private Button button6;
         private Button button7;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_X = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,6 +43,9 @@
             this.textBox_className = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.MethodsList = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -107,7 +111,7 @@
             // 
             // button_addProps
             // 
-            this.button_addProps.Location = new System.Drawing.Point(115, 170);
+            this.button_addProps.Location = new System.Drawing.Point(22, 170);
             this.button_addProps.Name = "button_addProps";
             this.button_addProps.Size = new System.Drawing.Size(100, 23);
             this.button_addProps.TabIndex = 8;
@@ -117,7 +121,7 @@
             // 
             // button_AddMethods
             // 
-            this.button_AddMethods.Location = new System.Drawing.Point(301, 170);
+            this.button_AddMethods.Location = new System.Drawing.Point(247, 170);
             this.button_AddMethods.Name = "button_AddMethods";
             this.button_AddMethods.Size = new System.Drawing.Size(100, 23);
             this.button_AddMethods.TabIndex = 9;
@@ -128,10 +132,12 @@
             // PropsList
             // 
             this.PropsList.AutoSize = true;
-            this.PropsList.Location = new System.Drawing.Point(76, 212);
-            this.PropsList.MaximumSize = new System.Drawing.Size(200, 0);
+            this.PropsList.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PropsList.Location = new System.Drawing.Point(39, 212);
+            this.PropsList.MaximumSize = new System.Drawing.Size(200, 100);
+            this.PropsList.MinimumSize = new System.Drawing.Size(200, 100);
             this.PropsList.Name = "PropsList";
-            this.PropsList.Size = new System.Drawing.Size(0, 15);
+            this.PropsList.Size = new System.Drawing.Size(200, 100);
             this.PropsList.TabIndex = 10;
             // 
             // label4
@@ -168,11 +174,28 @@
             this.checkBox1.TabIndex = 14;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // MethodsList
+            // 
+            this.MethodsList.AutoSize = true;
+            this.MethodsList.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MethodsList.Location = new System.Drawing.Point(247, 212);
+            this.MethodsList.MaximumSize = new System.Drawing.Size(200, 100);
+            this.MethodsList.MinimumSize = new System.Drawing.Size(200, 100);
+            this.MethodsList.Name = "MethodsList";
+            this.MethodsList.Size = new System.Drawing.Size(200, 100);
+            this.MethodsList.TabIndex = 15;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
+            // 
             // AddClassForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 410);
+            this.Controls.Add(this.MethodsList);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -188,7 +211,8 @@
             this.Controls.Add(this.textBox_X);
             this.Controls.Add(this.label1);
             this.Name = "AddClassForm";
-            this.Text = "AddClass";
+            this.Text = "Add Class";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +234,7 @@
         private TextBox textBox_className;
         private Label label5;
         private CheckBox checkBox1;
+        private Label MethodsList;
+        private ErrorProvider errorProvider;
     }
 }

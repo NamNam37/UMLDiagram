@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\UMLdiagram\\UMLdiagram\\UMLdiagram.csproj": {}
+    "F:\\UMLdiagram\\UMLdiagram\\UMLdiagram\\UMLdiagram.csproj": {}
   },
   "projects": {
-    "F:\\UMLdiagram\\UMLdiagram\\UMLdiagram.csproj": {
+    "F:\\UMLdiagram\\UMLdiagram\\UMLdiagram\\UMLdiagram.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\UMLdiagram\\UMLdiagram\\UMLdiagram.csproj",
+        "projectUniqueName": "F:\\UMLdiagram\\UMLdiagram\\UMLdiagram\\UMLdiagram.csproj",
         "projectName": "UMLdiagram",
-        "projectPath": "F:\\UMLdiagram\\UMLdiagram\\UMLdiagram.csproj",
+        "projectPath": "F:\\UMLdiagram\\UMLdiagram\\UMLdiagram\\UMLdiagram.csproj",
         "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-        "outputPath": "F:\\UMLdiagram\\UMLdiagram\\obj\\",
+        "outputPath": "F:\\UMLdiagram\\UMLdiagram\\UMLdiagram\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

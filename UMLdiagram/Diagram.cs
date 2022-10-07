@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UMLdiagram.Models;
 
 namespace UMLdiagram
 {
@@ -36,18 +37,41 @@ namespace UMLdiagram
         {
             objSelected.Move(mouseX, mouseY, relMousePosToObjX, relMousePosToObjY);
         }
+        public void Modify(ClassModel objSelected, ClassModel newClass)
+        {
+            classes.Remove(objSelected);
+            classes.Add(newClass);
+        }
+        public void DeleteAll()
+        {
+            classes = new List<ClassModel>();
+        }
         public ClassModel? CheckObjOnMouse(int mouseX, int mouseY)
         {
-            foreach (var item in classes)
+            for (int i = classes.Count - 1; i >= 0; i--)
+            {
+                var item = classes[i];
+                int itemEndX = item.X + item.width;
+                int itemEndY = item.Y + item.height;
+                if (mouseX >= item.X & mouseX <= itemEndX & mouseY >= item.Y & mouseY <= itemEndY)
+                {
+                    classes.Remove(item);
+                    classes.Add(item);
+                    return item;
+                }
+            }
+            /*foreach (var item in classes)
             {
                 int itemEndX = item.X + item.width;
                 int itemEndY = item.Y + item.height;
                 if (mouseX >= item.X & mouseX <= itemEndX & mouseY >= item.Y & mouseY <= itemEndY)
                 {
+                    classes.Remove(item);
+                    classes.Add(item);
                     return item;
                 }
                 
-            }
+            }*/
             return null;
         }
     }
