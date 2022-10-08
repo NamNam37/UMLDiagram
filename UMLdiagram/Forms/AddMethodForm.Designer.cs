@@ -98,6 +98,7 @@
             this.textBox_Name.Name = "textBox_Name";
             this.textBox_Name.Size = new System.Drawing.Size(120, 23);
             this.textBox_Name.TabIndex = 14;
+            this.textBox_Name.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Name_Validating);
             // 
             // comboBox_Type
             // 
@@ -152,9 +153,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(28, 184);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 15);
+            this.label4.Size = new System.Drawing.Size(102, 15);
             this.label4.TabIndex = 21;
-            this.label4.Text = "Property Returned:";
+            this.label4.Text = "Variable Returned:";
             // 
             // textBox_ReturnedVar
             // 
@@ -162,6 +163,7 @@
             this.textBox_ReturnedVar.Name = "textBox_ReturnedVar";
             this.textBox_ReturnedVar.Size = new System.Drawing.Size(120, 23);
             this.textBox_ReturnedVar.TabIndex = 20;
+            this.textBox_ReturnedVar.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_ReturnedVar_Validating);
             // 
             // errorProvider
             // 
@@ -172,6 +174,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(334, 361);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox_ReturnedVar);

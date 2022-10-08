@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBox_X = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,20 +41,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox_className = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox_interface = new System.Windows.Forms.CheckBox();
             this.MethodsList = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(184, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Add New Class";
             // 
             // textBox_X
             // 
@@ -63,6 +53,7 @@
             this.textBox_X.Name = "textBox_X";
             this.textBox_X.Size = new System.Drawing.Size(100, 23);
             this.textBox_X.TabIndex = 1;
+            this.textBox_X.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_coords_Validating);
             // 
             // label2
             // 
@@ -88,6 +79,7 @@
             this.textBox_Y.Name = "textBox_Y";
             this.textBox_Y.Size = new System.Drawing.Size(100, 23);
             this.textBox_Y.TabIndex = 5;
+            this.textBox_Y.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_coords_Validating);
             // 
             // button_cancel
             // 
@@ -155,6 +147,7 @@
             this.textBox_className.Name = "textBox_className";
             this.textBox_className.Size = new System.Drawing.Size(100, 23);
             this.textBox_className.TabIndex = 11;
+            this.textBox_className.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_className_Validating);
             // 
             // label5
             // 
@@ -165,14 +158,15 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Is Interface?";
             // 
-            // checkBox1
+            // checkBox_interface
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(325, 70);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox_interface.AutoSize = true;
+            this.checkBox_interface.Location = new System.Drawing.Point(325, 70);
+            this.checkBox_interface.Name = "checkBox_interface";
+            this.checkBox_interface.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_interface.TabIndex = 14;
+            this.checkBox_interface.UseVisualStyleBackColor = true;
+            this.checkBox_interface.CheckedChanged += new System.EventHandler(this.checkBox_interface_CheckedChanged);
             // 
             // MethodsList
             // 
@@ -194,9 +188,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(499, 410);
             this.Controls.Add(this.MethodsList);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkBox_interface);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox_className);
@@ -209,7 +204,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox_X);
-            this.Controls.Add(this.label1);
             this.Name = "AddClassForm";
             this.Text = "Add Class";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
@@ -219,8 +213,6 @@
         }
 
         #endregion
-
-        private Label label1;
         private TextBox textBox_X;
         private Label label2;
         private Label label3;
@@ -233,7 +225,7 @@
         private Label label4;
         private TextBox textBox_className;
         private Label label5;
-        private CheckBox checkBox1;
+        private CheckBox checkBox_interface;
         private Label MethodsList;
         private ErrorProvider errorProvider;
     }

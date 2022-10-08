@@ -50,7 +50,7 @@ namespace UMLdiagram
 
             if (string.IsNullOrWhiteSpace(textBox_Name.Text))
             {
-                this.errorProvider.SetError(textBox_Name, "Enter name for variable.");
+                this.errorProvider.SetError(textBox_Name, "Enter name for property.");
                 e.Cancel = true;
             }
 
