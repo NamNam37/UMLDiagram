@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UMLdiagram.Models;
 using System.Windows.Forms;
+using UMLdiagram.Forms;
 
 namespace UMLdiagram
 {
@@ -31,6 +32,7 @@ namespace UMLdiagram
             textBox_Y.Text = editedClass.Y.ToString();
             PropsList.Text = CreateStringForList(editedClass.props);
             MethodsList.Text = CreateStringForList(editedClass.methods);
+            checkBox_interface.Checked = editedClass.isInterface;
             newClass = editedClass;
         }
 
@@ -44,7 +46,7 @@ namespace UMLdiagram
         {
             if (this.ValidateChildren())
             {
-                newClass.name = textBox_className.Text;
+                newClass.name = char.ToUpper(textBox_className.Text[0]) + textBox_className.Text.Substring(1);
 
                 if (textBox_X.Text.Length == 0)
                     textBox_X.Text = "20";
@@ -53,7 +55,7 @@ namespace UMLdiagram
 
                 newClass.X = int.Parse(textBox_X.Text);
                 newClass.Y = int.Parse(textBox_Y.Text);
-
+                newClass.isInterface = isInterface;
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -62,28 +64,22 @@ namespace UMLdiagram
 
         private void button_addProps_Click(object sender, EventArgs e)
         {
-            AddPropsForm addPropsForm = new AddPropsForm();
+            AddPropsForm addPropsForm = new AddPropsForm(newClass.props, isInterface);
             addPropsForm.ShowDialog();
             if (addPropsForm.DialogResult == DialogResult.OK)
             {
-                foreach (var item in addPropsForm.props)
-                {
-                    newClass.props.Add(item);
-                }
+                newClass.props = addPropsForm.props;
             }
             PropsList.Text = CreateStringForList(newClass.props);
         }
 
         private void button_AddMethods_Click(object sender, EventArgs e)
         {
-            AddMethodForm addMethodForm = new AddMethodForm();
+            AddMethodForm addMethodForm = new AddMethodForm(newClass.methods, isInterface);
             addMethodForm.ShowDialog();
             if (addMethodForm.DialogResult == DialogResult.OK)
             {
-                foreach (var item in addMethodForm.methods)
-                {
-                    newClass.methods.Add(item);
-                }
+                newClass.methods = addMethodForm.methods;
             }
             MethodsList.Text = CreateStringForList(newClass.methods);
         }
@@ -92,7 +88,7 @@ namespace UMLdiagram
             string output = "";
             foreach (var item in list)
             {
-                output += item.name + " ; ";
+                output += item.name + "() ; ";
             }
             if (output.Length > 0)
                 output = output.Remove(output.Length - 3);
@@ -131,10 +127,23 @@ namespace UMLdiagram
 
             this.errorProvider.SetError(textbox, null);
 
-            if (textbox.Text.Length > 0 && !Regex.IsMatch(textbox.Text, @"^[0-9]{1,3}$"))
+            if (textbox.Text.Length > 0 && !Regex.IsMatch(textbox.Text, @"^[0-9]{1,4}$"))
             {
                 this.errorProvider.SetError(textbox, "This coordinate has to be an integer.");
                 e.Cancel = true;
+            }
+        }
+
+        private void button_Remove_Click(object sender, EventArgs e)
+        {
+            RemovePMForm removePMForm = new RemovePMForm(newClass.props, newClass.methods);
+            removePMForm.ShowDialog();
+            if (removePMForm.DialogResult == DialogResult.OK)
+            {
+                newClass.props = removePMForm.newProps;
+                newClass.methods = removePMForm.newMethods;
+                PropsList.Text = CreateStringForList(newClass.props);
+                MethodsList.Text = CreateStringForList(newClass.methods);
             }
         }
     }

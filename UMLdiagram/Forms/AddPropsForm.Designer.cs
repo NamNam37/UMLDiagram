@@ -48,7 +48,7 @@
             this.button_Cancel.Location = new System.Drawing.Point(106, 282);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 0;
+            this.button_Cancel.TabIndex = 8;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
@@ -58,7 +58,7 @@
             this.button_Confirm.Location = new System.Drawing.Point(217, 282);
             this.button_Confirm.Name = "button_Confirm";
             this.button_Confirm.Size = new System.Drawing.Size(75, 23);
-            this.button_Confirm.TabIndex = 1;
+            this.button_Confirm.TabIndex = 9;
             this.button_Confirm.Text = "Confirm";
             this.button_Confirm.UseVisualStyleBackColor = true;
             this.button_Confirm.Click += new System.EventHandler(this.button_Confirm_Click);
@@ -74,7 +74,7 @@
             this.comboBox_AccessMod.Location = new System.Drawing.Point(172, 29);
             this.comboBox_AccessMod.Name = "comboBox_AccessMod";
             this.comboBox_AccessMod.Size = new System.Drawing.Size(120, 23);
-            this.comboBox_AccessMod.TabIndex = 2;
+            this.comboBox_AccessMod.TabIndex = 1;
             // 
             // comboBox_Type
             // 
@@ -96,7 +96,7 @@
             this.textBox_Name.Location = new System.Drawing.Point(172, 139);
             this.textBox_Name.Name = "textBox_Name";
             this.textBox_Name.Size = new System.Drawing.Size(120, 23);
-            this.textBox_Name.TabIndex = 4;
+            this.textBox_Name.TabIndex = 5;
             this.textBox_Name.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Name_Validating);
             // 
             // label1
@@ -105,7 +105,7 @@
             this.label1.Location = new System.Drawing.Point(27, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 15);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Access Modifier:";
             // 
             // label2
@@ -114,7 +114,7 @@
             this.label2.Location = new System.Drawing.Point(27, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 15);
-            this.label2.TabIndex = 6;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Type:";
             // 
             // label3
@@ -123,7 +123,7 @@
             this.label3.Location = new System.Drawing.Point(27, 142);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 15);
-            this.label3.TabIndex = 7;
+            this.label3.TabIndex = 4;
             this.label3.Text = "Property Name:";
             // 
             // label_AddedProp
@@ -134,14 +134,14 @@
             this.label_AddedProp.MinimumSize = new System.Drawing.Size(250, 0);
             this.label_AddedProp.Name = "label_AddedProp";
             this.label_AddedProp.Size = new System.Drawing.Size(250, 15);
-            this.label_AddedProp.TabIndex = 8;
+            this.label_AddedProp.TabIndex = 7;
             // 
             // button_Add
             // 
             this.button_Add.Location = new System.Drawing.Point(27, 188);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(120, 23);
-            this.button_Add.TabIndex = 9;
+            this.button_Add.TabIndex = 6;
             this.button_Add.Text = "Add Property";
             this.button_Add.UseVisualStyleBackColor = true;
             this.button_Add.Click += new System.EventHandler(this.button_Add_Click);

@@ -16,9 +16,12 @@ namespace UMLdiagram
     {
         public List<MethodModel> methods = new List<MethodModel>();
         private const string invalidCharacters = @"><@{}[]#&()/|*-+$%~\";
-        public AddMethodForm()
+        private bool isInterface { get; set; } = false;
+        public AddMethodForm(List<MethodModel> methods, bool isInterface)
         {
             InitializeComponent();
+            this.methods = methods; 
+            this.isInterface = isInterface;
             comboBox_AccessMod.Text = "private";
             comboBox_Type.Text = "string";
         }
@@ -27,7 +30,7 @@ namespace UMLdiagram
         {
             if (this.ValidateChildren())
             {
-                methods.Add(new MethodModel(comboBox_AccessMod.Text, comboBox_Type.Text, textBox_Name.Text, textBox_ReturnedVar.Text));
+                methods.Add(new MethodModel(comboBox_AccessMod.Text, comboBox_Type.Text, char.ToUpper(textBox_Name.Text[0])+textBox_Name.Text.Substring(1), textBox_ReturnedVar.Text));
                 label_AddedMethod.Text = $"Property \"{textBox_Name.Text}\" has been added.";
             }
         }
@@ -56,7 +59,7 @@ namespace UMLdiagram
 
             foreach (var item in methods)
             {
-                if (item.name == textBox_Name.Text)
+                if (item.name == char.ToUpper(textBox_Name.Text[0]) + textBox_Name.Text.Substring(1))
                 {
                     this.errorProvider.SetError(textBox_Name, "Method with this name exists.");
                     e.Cancel = true;

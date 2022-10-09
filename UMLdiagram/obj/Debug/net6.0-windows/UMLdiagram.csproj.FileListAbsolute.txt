@@ -77,3 +77,4 @@ F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.genrunti
 F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\ref\UMLdiagram.dll
 F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.AddPropsForm.resources
 F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.AddMethodForm.resources
+F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.Forms.RemovePMForm.resources

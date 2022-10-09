@@ -50,7 +50,7 @@
             this.button_Add.Location = new System.Drawing.Point(28, 232);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(120, 23);
-            this.button_Add.TabIndex = 19;
+            this.button_Add.TabIndex = 8;
             this.button_Add.Text = "Add Method";
             this.button_Add.UseVisualStyleBackColor = true;
             this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
@@ -63,7 +63,7 @@
             this.label_AddedMethod.MinimumSize = new System.Drawing.Size(250, 0);
             this.label_AddedMethod.Name = "label_AddedMethod";
             this.label_AddedMethod.Size = new System.Drawing.Size(250, 15);
-            this.label_AddedMethod.TabIndex = 18;
+            this.label_AddedMethod.TabIndex = 9;
             // 
             // label3
             // 
@@ -71,7 +71,7 @@
             this.label3.Location = new System.Drawing.Point(28, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 15);
-            this.label3.TabIndex = 17;
+            this.label3.TabIndex = 4;
             this.label3.Text = "Method Name:";
             // 
             // label2
@@ -80,7 +80,7 @@
             this.label2.Location = new System.Drawing.Point(28, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 15);
-            this.label2.TabIndex = 16;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Return Type:";
             // 
             // label1
@@ -89,7 +89,7 @@
             this.label1.Location = new System.Drawing.Point(28, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 15);
-            this.label1.TabIndex = 15;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Access Modifier:";
             // 
             // textBox_Name
@@ -97,7 +97,7 @@
             this.textBox_Name.Location = new System.Drawing.Point(173, 133);
             this.textBox_Name.Name = "textBox_Name";
             this.textBox_Name.Size = new System.Drawing.Size(120, 23);
-            this.textBox_Name.TabIndex = 14;
+            this.textBox_Name.TabIndex = 5;
             this.textBox_Name.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_Name_Validating);
             // 
             // comboBox_Type
@@ -113,7 +113,7 @@
             this.comboBox_Type.Location = new System.Drawing.Point(173, 81);
             this.comboBox_Type.Name = "comboBox_Type";
             this.comboBox_Type.Size = new System.Drawing.Size(120, 23);
-            this.comboBox_Type.TabIndex = 13;
+            this.comboBox_Type.TabIndex = 3;
             // 
             // comboBox_AccessMod
             // 
@@ -126,7 +126,7 @@
             this.comboBox_AccessMod.Location = new System.Drawing.Point(173, 27);
             this.comboBox_AccessMod.Name = "comboBox_AccessMod";
             this.comboBox_AccessMod.Size = new System.Drawing.Size(120, 23);
-            this.comboBox_AccessMod.TabIndex = 12;
+            this.comboBox_AccessMod.TabIndex = 1;
             // 
             // button_Confirm
             // 
@@ -154,7 +154,7 @@
             this.label4.Location = new System.Drawing.Point(28, 184);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 15);
-            this.label4.TabIndex = 21;
+            this.label4.TabIndex = 6;
             this.label4.Text = "Variable Returned:";
             // 
             // textBox_ReturnedVar
@@ -162,7 +162,7 @@
             this.textBox_ReturnedVar.Location = new System.Drawing.Point(173, 181);
             this.textBox_ReturnedVar.Name = "textBox_ReturnedVar";
             this.textBox_ReturnedVar.Size = new System.Drawing.Size(120, 23);
-            this.textBox_ReturnedVar.TabIndex = 20;
+            this.textBox_ReturnedVar.TabIndex = 7;
             this.textBox_ReturnedVar.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_ReturnedVar_Validating);
             // 
             // errorProvider

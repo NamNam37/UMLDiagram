@@ -17,11 +17,15 @@ namespace UMLdiagram
     {
         public List<PropertyModel> props = new List<PropertyModel>();
         private const string invalidCharacters = @"><@{}[]#&()/|*-+$%~\";
-        public AddPropsForm()
+        private bool isInterface { get; set; } = false;
+        public AddPropsForm(List<PropertyModel> props, bool isInterface)
         {
             InitializeComponent();
+            this.props = props;
+            this.isInterface = isInterface;
             comboBox_AccessMod.Text = "private";
             comboBox_Type.Text = "string";
+
         }
         private void button_Add_Click(object sender, EventArgs e)
         {

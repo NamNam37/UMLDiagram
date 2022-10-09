@@ -1,0 +1,7 @@
+remove props methods
+interfacy
+tab indexy
+vztahy class
+save/load
+screenshot
+generovani kodu

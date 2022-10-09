@@ -15,6 +15,7 @@ namespace UMLdiagram.Models
         public int width { get; set; } = 50;
         public int height { get; set; }
         public string name { get; set; }
+        public bool isInterface { get; set; } = false;
         public List<PropertyModel> props { get; set; } = new List<PropertyModel>();
         public List<MethodModel> methods { get; set; } = new List<MethodModel>();
         public ClassModel(int X, int Y)
@@ -43,7 +44,15 @@ namespace UMLdiagram.Models
             int itemEndX = X + width;
             g.DrawLine(Pens.Black, X, Y + 20, itemEndX, Y + 20); //line under class name
             Font fontClassName = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold); // font for class name
-            g.DrawString(name, fontClassName, Brushes.Black, X, Y); // class name
+            if (isInterface)
+            {
+                g.DrawString("<interface>   " + name, fontClassName, Brushes.Black, X, Y); // class name w "interface"
+            } else 
+            {
+                g.DrawString(name, fontClassName, Brushes.Black, X, Y); // class name
+            }
+            if (isInterface)
+                width = width < (int)g.MeasureString("<interface>   " + name, fontClassName).Width ? (int)g.MeasureString("<interface>   " + name, fontClassName).Width + 20 : width; // scale width with class name w interface
             width = width < (int)g.MeasureString(name, fontClassName).Width ? (int)g.MeasureString(name, fontClassName).Width + 20 : width; // scale width with class name
         }
         private void DrawProps(Graphics g)
