@@ -12,18 +12,23 @@ namespace UMLdiagram
     {
         public int winWidth { get; set; }
         public int winHeight { get; set; }
-        public List<ClassModel> classes = new List<ClassModel>();
+        public List<Class> classes = new List<Class>();
+        public List<ConnectionModel> connections = new List<ConnectionModel>();
 
-        public void AddClass(ClassModel addClass)
+        public void AddClass(Class addClass)
         {
             classes.Add(addClass);
         }
-        public void RemoveClass(ClassModel objSelected)
+        public void AddConnection(Class class1, Class class2)
+        {
+            connections.Add(new ConnectionModel(class1, class2));
+        }
+        public void RemoveClass(Class objSelected)
         {
             classes.Remove(objSelected);
             
         }
-        public void Draw(Graphics g, ClassModel objSelected)
+        public void Draw(Graphics g, Class objSelected)
         {
             foreach (var item in classes)
             {
@@ -33,20 +38,20 @@ namespace UMLdiagram
                     objSelected.DrawSelection(g);
             }
         }
-        public void Move(ClassModel objSelected, int mouseX, int mouseY, int relMousePosToObjX, int relMousePosToObjY)
+        public void Move(Class objSelected, int mouseX, int mouseY, int relMousePosToObjX, int relMousePosToObjY)
         {
             objSelected.Move(mouseX, mouseY, relMousePosToObjX, relMousePosToObjY);
         }
-        public void Modify(ClassModel objSelected, ClassModel newClass)
+        public void Modify(Class objSelected, Class newClass)
         {
             classes.Remove(objSelected);
             classes.Add(newClass);
         }
         public void DeleteAll()
         {
-            classes = new List<ClassModel>();
+            classes = new List<Class>();
         }
-        public ClassModel? CheckObjOnMouse(int mouseX, int mouseY)
+        public Class? CheckObjOnMouse(int mouseX, int mouseY)
         {
             for (int i = classes.Count - 1; i >= 0; i--)
             {

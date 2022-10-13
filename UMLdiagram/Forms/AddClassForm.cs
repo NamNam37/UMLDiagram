@@ -11,29 +11,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UMLdiagram.Models;
 using System.Windows.Forms;
-using UMLdiagram.Forms;
 
 namespace UMLdiagram
 {
     public partial class AddClassForm : Form
     {
-        public ClassModel newClass { get; set; } = new ClassModel(0, 0);
-        public bool isInterface { get; set; } = false;
+        
+        public ClassMaker classMaker { get; set; } = new ClassMaker();
 
         public AddClassForm()
         {
             InitializeComponent();
         }
-        public AddClassForm(ClassModel editedClass)
+        public AddClassForm(Class editedClass)
         {
             InitializeComponent();
             textBox_className.Text = editedClass.name;
-            textBox_X.Text = editedClass.X.ToString();
-            textBox_Y.Text = editedClass.Y.ToString();
-            PropsList.Text = CreateStringForList(editedClass.props);
-            MethodsList.Text = CreateStringForList(editedClass.methods);
             checkBox_interface.Checked = editedClass.isInterface;
-            newClass = editedClass;
+            comboBox_AccessModProp.Text = "private";
+            comboBox_AccessModMethod.Text = "private";
+            classMaker.newClass = editedClass;
         }
 
         private void button_cancel_Click(object sender, EventArgs e)
@@ -46,104 +43,66 @@ namespace UMLdiagram
         {
             if (this.ValidateChildren())
             {
-                newClass.name = char.ToUpper(textBox_className.Text[0]) + textBox_className.Text.Substring(1);
-
-                if (textBox_X.Text.Length == 0)
-                    textBox_X.Text = "20";
-                if (textBox_Y.Text.Length == 0)
-                    textBox_Y.Text = "20";
-
-                newClass.X = int.Parse(textBox_X.Text);
-                newClass.Y = int.Parse(textBox_Y.Text);
-                newClass.isInterface = isInterface;
+                classMaker.newClass.name = char.ToUpper(textBox_className.Text[0]) + textBox_className.Text.Substring(1);
+                classMaker.newClass.isInterface = classMaker.isInterface;
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
 
-        private void button_addProps_Click(object sender, EventArgs e)
-        {
-            AddPropsForm addPropsForm = new AddPropsForm(newClass.props, isInterface);
-            addPropsForm.ShowDialog();
-            if (addPropsForm.DialogResult == DialogResult.OK)
-            {
-                newClass.props = addPropsForm.props;
-            }
-            PropsList.Text = CreateStringForList(newClass.props);
-        }
-
-        private void button_AddMethods_Click(object sender, EventArgs e)
-        {
-            AddMethodForm addMethodForm = new AddMethodForm(newClass.methods, isInterface);
-            addMethodForm.ShowDialog();
-            if (addMethodForm.DialogResult == DialogResult.OK)
-            {
-                newClass.methods = addMethodForm.methods;
-            }
-            MethodsList.Text = CreateStringForList(newClass.methods);
-        }
-        private string CreateStringForList(List<MethodModel> list)
-        {
-            string output = "";
-            foreach (var item in list)
-            {
-                output += item.name + "() ; ";
-            }
-            if (output.Length > 0)
-                output = output.Remove(output.Length - 3);
-            return output;
-        }
-        private string CreateStringForList(List<PropertyModel> list)
-        {
-            string output = "";
-            foreach (var item in list)
-            {
-                output += item.name + " ; ";
-            }
-            if (output.Length > 0)
-                output = output.Remove(output.Length - 3);
-            return output;
-        }
-
         private void checkBox_interface_CheckedChanged(object sender, EventArgs e)
         {
-            this.isInterface = checkBox_interface.Checked;
+            classMaker.isInterface = checkBox_interface.Checked;
         }
 
-        private void textBox_className_Validating(object sender, CancelEventArgs e)
+        private void button_AddProp_Click(object sender, EventArgs e)
+        {
+            classMaker.AddProp(comboBox_AccessModProp.Text, textBox_TypeProp.Text, textBox_NameProp.Text);
+        }
+
+        private void button_EditProp_Click(object sender, EventArgs e)
+        {
+            classMaker.EditProp(listBox_Props.SelectedIndex);
+        }
+
+        private void button_RemoveProp_Click(object sender, EventArgs e)
+        {
+            classMaker.RemoveProp(listBox_Props.SelectedIndex);
+        }
+
+        private void button_AddParam_Click(object sender, EventArgs e)
+        {
+            classMaker.AddParam(textBox_TypeParam.Text, textBox_NameParam.Text);
+        }
+
+        private void button_RemoveParam_Click(object sender, EventArgs e)
+        {
+            classMaker.RemoveParam(listBox_Params.SelectedIndex);
+        }
+
+        private void button_AddMethod_Click(object sender, EventArgs e)
+        {
+            classMaker.AddMethod(comboBox_AccessModMethod.Text, textBox_ReturnTypeMethod.Text, textBox_NameMethod.Text);
+        }
+
+        private void button_EditMethod_Click(object sender, EventArgs e)
+        {
+            classMaker.EditMethod(listBox_Props.SelectedIndex);
+        }
+
+        private void button_RemoveMethod_Click(object sender, EventArgs e)
+        {
+            classMaker.RemoveMethod(listBox_Props.SelectedIndex);
+        }
+        private void textBox_NotEmpty_Validating(object sender, CancelEventArgs e)
         {
             this.errorProvider.SetError(textBox_className, null);
 
             if (string.IsNullOrWhiteSpace(textBox_className.Text))
             {
-                this.errorProvider.SetError(textBox_className, "Enter name for this Class.");
+                this.errorProvider.SetError(textBox_className, "This field cannot be empty.");
                 e.Cancel = true;
-            }
-        }
-        private void textBox_coords_Validating(object sender, CancelEventArgs e)
-        {
-            TextBox textbox = sender as TextBox;
-
-            this.errorProvider.SetError(textbox, null);
-
-            if (textbox.Text.Length > 0 && !Regex.IsMatch(textbox.Text, @"^[0-9]{1,4}$"))
-            {
-                this.errorProvider.SetError(textbox, "This coordinate has to be an integer.");
-                e.Cancel = true;
-            }
-        }
-
-        private void button_Remove_Click(object sender, EventArgs e)
-        {
-            RemovePMForm removePMForm = new RemovePMForm(newClass.props, newClass.methods);
-            removePMForm.ShowDialog();
-            if (removePMForm.DialogResult == DialogResult.OK)
-            {
-                newClass.props = removePMForm.newProps;
-                newClass.methods = removePMForm.newMethods;
-                PropsList.Text = CreateStringForList(newClass.props);
-                MethodsList.Text = CreateStringForList(newClass.methods);
             }
         }
     }

@@ -43,7 +43,6 @@ E:\UMLdiagram\UMLdiagram\UMLdiagram\bin\Debug\net6.0-windows\UMLdiagram.dll
 E:\UMLdiagram\UMLdiagram\UMLdiagram\bin\Debug\net6.0-windows\UMLdiagram.pdb
 E:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.csproj.AssemblyReference.cache
 E:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.AddClassForm.resources
-E:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.EditClassForm.resources
 E:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.Form1.resources
 E:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.csproj.GenerateResource.cache
 E:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.GeneratedMSBuildEditorConfig.editorconfig
@@ -75,6 +74,5 @@ F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\refint\UMLdiagram.d
 F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.pdb
 F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.genruntimeconfig.cache
 F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\ref\UMLdiagram.dll
-F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.AddPropsForm.resources
-F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.AddMethodForm.resources
-F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.Forms.RemovePMForm.resources
+E:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.AddMethodForm.resources
+E:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.AddPropsForm.resources

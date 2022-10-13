@@ -6,18 +6,14 @@ using System.Threading.Tasks;
 
 namespace UMLdiagram.Models
 {
-    public class MethodModel
+    public class ParameterModel
     {
-        public string accessMod { get; set; }
         public string type { get; set; }
         public string name { get; set; }
-        public List<ParameterModel> parameters { get; set; }
-        public MethodModel(string accessMod, string type, string name, List<ParameterModel> paramaters)
+        public ParameterModel(string type, string name)
         {
-            this.accessMod = accessMod;
             this.type = type;
             this.name = name;
-            this.parameters = paramaters;
         }
     }
 }

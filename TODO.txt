@@ -1,4 +1,4 @@
-remove props methods
+check jestli je X Y classy mimo picBox
 interfacy
 tab indexy
 vztahy class

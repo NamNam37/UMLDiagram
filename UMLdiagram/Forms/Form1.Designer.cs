@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button_AddClass = new System.Windows.Forms.Button();
             this.button_RemoveClass = new System.Windows.Forms.Button();
             this.button_EditClass = new System.Windows.Forms.Button();
             this.button_ClearPicbox = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button_Connect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,17 +91,22 @@
             this.button_ClearPicbox.UseVisualStyleBackColor = false;
             this.button_ClearPicbox.Click += new System.EventHandler(this.button_ClearPicbox_Click);
             // 
-            // timer1
+            // button_Connect
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 30;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.button_Connect.Location = new System.Drawing.Point(360, 524);
+            this.button_Connect.Name = "button_Connect";
+            this.button_Connect.Size = new System.Drawing.Size(110, 25);
+            this.button_Connect.TabIndex = 4;
+            this.button_Connect.Text = "Connect Classes";
+            this.button_Connect.UseVisualStyleBackColor = true;
+            this.button_Connect.Click += new System.EventHandler(this.button_Connect_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.button_Connect);
             this.Controls.Add(this.button_ClearPicbox);
             this.Controls.Add(this.button_EditClass);
             this.Controls.Add(this.button_RemoveClass);
@@ -122,6 +126,6 @@
         private Button button_RemoveClass;
         private Button button_EditClass;
         private Button button_ClearPicbox;
-        private System.Windows.Forms.Timer timer1;
+        private Button button_Connect;
     }
 }

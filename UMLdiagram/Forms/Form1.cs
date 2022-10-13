@@ -1,12 +1,11 @@
 using System.Diagnostics;
-using UMLdiagram.Models;
 
 namespace UMLdiagram
 {
     public partial class Form1 : Form
     {
         public Diagram diagram { get; set; }
-        private ClassModel? objSelected { get; set; }
+        private Class? objSelected { get; set; }
         private bool isMoved { get; set; }
         private int relMousePosToObjX { get; set; }
         private int relMousePosToObjY { get; set; }
@@ -16,6 +15,12 @@ namespace UMLdiagram
             InitializeComponent();
             diagram = new Diagram() { winWidth = this.pictureBox1.Width, winHeight = this.pictureBox1.Height };
             isMoved = false;
+
+            Class class1 = new Class() { name = "test", X = 20, Y = 50 };
+            Class class2 = new Class() { name = "test2", X = 200, Y = 50 };
+            diagram.AddClass(class1);
+            diagram.AddClass(class2);
+            diagram.AddConnection(class1, class2);
         }
         private void button_AddClass_Click(object sender, EventArgs e)
         {
@@ -23,7 +28,7 @@ namespace UMLdiagram
             addClassForm.ShowDialog();
             if (addClassForm.DialogResult == DialogResult.OK)
             {
-                diagram.AddClass(addClassForm.newClass);
+                diagram.AddClass(addClassForm.classMaker.newClass);
                 objSelected = null;
             }
         }
@@ -32,11 +37,6 @@ namespace UMLdiagram
         {
             e.Graphics.DrawRectangle(Pens.Black, 0, 0, pictureBox1.Size.Width-1, pictureBox1.Size.Height-1);
             diagram.Draw(e.Graphics, objSelected);
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            pictureBox1.Refresh();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -65,6 +65,8 @@ namespace UMLdiagram
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
+            pictureBox1.Refresh();
+
             if (isMoved)
                 diagram.Move(objSelected, e.X, e.Y, relMousePosToObjX, relMousePosToObjY);
         }
@@ -80,7 +82,7 @@ namespace UMLdiagram
 
         private void pictureBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ClassModel? editedClass = diagram.CheckObjOnMouse(e.X, e.Y);
+            Class? editedClass = diagram.CheckObjOnMouse(e.X, e.Y);
             if (editedClass != null)
             {
                 EditClass(editedClass);
@@ -94,11 +96,11 @@ namespace UMLdiagram
                 EditClass(objSelected);
             }
         }
-        private void EditClass(ClassModel editedClass)
+        private void EditClass(Class editedClass)
         {
             AddClassForm addClassForm = new AddClassForm(editedClass);
             addClassForm.ShowDialog();
-            diagram.Modify(editedClass, addClassForm.newClass);           
+            diagram.Modify(editedClass, addClassForm.classMaker.newClass);           
         }
 
         private void button_ClearPicbox_Click(object sender, EventArgs e)
@@ -110,6 +112,11 @@ namespace UMLdiagram
             {
                 diagram.DeleteAll();
             }
+
+        }
+
+        private void button_Connect_Click(object sender, EventArgs e)
+        {
 
         }
     }

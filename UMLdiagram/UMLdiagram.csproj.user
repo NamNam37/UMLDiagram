@@ -4,16 +4,7 @@
     <Compile Update="Forms\AddClassForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\AddMethodForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\AddPropsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\RemovePMForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

@@ -5,24 +5,20 @@ using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UMLdiagram.Models;
 
-namespace UMLdiagram.Models
+namespace UMLdiagram
 {
-    public class ClassModel
+    public class Class
     {
-        public int X { get; set; } = 0;
-        public int Y { get; set; } = 0;
+        public int X { get; set; } = 20;
+        public int Y { get; set; } = 20;
         public int width { get; set; } = 50;
-        public int height { get; set; }
+        public int height { get; set; } = 40;
         public string name { get; set; }
         public bool isInterface { get; set; } = false;
         public List<PropertyModel> props { get; set; } = new List<PropertyModel>();
         public List<MethodModel> methods { get; set; } = new List<MethodModel>();
-        public ClassModel(int X, int Y)
-        {
-            this.X = X;
-            this.Y = Y;
-        }
         public void Draw(Graphics g)
         {
             height = 40 + 20 * props.Count + 20 * methods.Count;
@@ -47,7 +43,8 @@ namespace UMLdiagram.Models
             if (isInterface)
             {
                 g.DrawString("<interface>   " + name, fontClassName, Brushes.Black, X, Y); // class name w "interface"
-            } else 
+            }
+            else
             {
                 g.DrawString(name, fontClassName, Brushes.Black, X, Y); // class name
             }
@@ -75,7 +72,7 @@ namespace UMLdiagram.Models
             for (int i = 0; i < methods.Count; i++)
             {
                 char accessModShort = ShortenAccessModifier(methods[i].accessMod); // "public -> +" etc...
-                string propDisplay = $"{accessModShort} {methods[i].type} {methods[i].name}() returns {methods[i].returnedName}"; // method string to display on class
+                string propDisplay = $"{accessModShort} {methods[i].name}() : {methods[i].type}"; // method string to display on class
                 g.DrawString(propDisplay, fontProps, Brushes.Black, X, Y + 20 * props.Count + 20 * (i + 1)); // displaying the string
                 width = width < (int)g.MeasureString(propDisplay, fontProps).Width ? (int)g.MeasureString(propDisplay, fontProps).Width : width; // scale width with widest method
             }
