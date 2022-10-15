@@ -1,6 +1,7 @@
-using Microsoft.VisualBasic.Devices;
+﻿using Microsoft.VisualBasic.Devices;
 using System.Diagnostics;
 using System.Threading;
+using UMLdiagram.Drawers;
 
 namespace UMLdiagram
 {
@@ -19,7 +20,7 @@ namespace UMLdiagram
             diagram = new Diagram() { winWidth = this.pictureBox1.Width, winHeight = this.pictureBox1.Height };
             connectionManager = new ConnectionManager();
             isMoved = false;
-
+            comboBox_ArrowType.Text = "Association";
             Class class1 = new Class() { name = "test", X = 20, Y = 50 };
             Class class2 = new Class() { name = "test2", X = 200, Y = 50 };
             diagram.AddClass(class1);
@@ -64,10 +65,42 @@ namespace UMLdiagram
                 }
                 else
                 {
-                    connectSelectMode = connectionManager.AddToConnection(objSelected);
+                    connectSelectMode = connectionManager.AddToConnection(objSelected, ConvertArrTypeToEnum());
                 }
             }
             
+        }
+        private ArrowDrawer.Type ConvertArrTypeToEnum()
+        {
+            if (comboBox_ArrowType.Text == "Association")
+            {
+                return ArrowDrawer.Type.none;
+            }
+            if (comboBox_ArrowType.Text == "Unidir. Association")
+            {
+                return ArrowDrawer.Type.classic;
+            }
+            if (comboBox_ArrowType.Text == "Inheritance" || comboBox_ArrowType.Text == "Generalization")
+            {
+                return ArrowDrawer.Type.triangle;
+            }
+            if (comboBox_ArrowType.Text == "Realization")
+            {
+                return ArrowDrawer.Type.triangleDotdash;
+            }
+            if (comboBox_ArrowType.Text == "Dependency" || comboBox_ArrowType.Text == "Abstraction" || comboBox_ArrowType.Text == "Substitution" || comboBox_ArrowType.Text == "Usage")
+            {
+                return ArrowDrawer.Type.classicDotdash;
+            }
+            if (comboBox_ArrowType.Text == "Aggregation")
+            {
+                return ArrowDrawer.Type.diamondEmpty;
+            }
+            if (comboBox_ArrowType.Text == "Composiotion")
+            {
+                return ArrowDrawer.Type.diamond;
+            }
+            return ArrowDrawer.Type.none;
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -132,5 +165,19 @@ namespace UMLdiagram
             connectSelectMode = true;
             diagram.SetConnection(connectionManager.connections);
         }
+
+        private void button_RemoveConnection_Click(object sender, EventArgs e)
+        {
+
+        }
+        /*
+cara - asociace
+sipka - jednosmerna-asociace
+trojuhelnik - dědičnost generalizace
+cerchovana sipka a trojuhelnik - realizace
+cerchovana cara a sipka - dependence abstrakce substituce pouziti
+prazdnej diamant - agregace
+diamant - kompozice
+*/
     }
 }

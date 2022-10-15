@@ -225,21 +225,21 @@
             this.listBox_Props.Location = new System.Drawing.Point(400, 40);
             this.listBox_Props.Name = "listBox_Props";
             this.listBox_Props.Size = new System.Drawing.Size(250, 394);
-            this.listBox_Props.TabIndex = 6;
+            this.listBox_Props.TabIndex = 8;
             // 
             // textBox_TypeProp
             // 
             this.textBox_TypeProp.Location = new System.Drawing.Point(180, 100);
             this.textBox_TypeProp.Name = "textBox_TypeProp";
             this.textBox_TypeProp.Size = new System.Drawing.Size(120, 23);
-            this.textBox_TypeProp.TabIndex = 2;
+            this.textBox_TypeProp.TabIndex = 4;
             // 
             // button_AddProp
             // 
             this.button_AddProp.Location = new System.Drawing.Point(33, 220);
             this.button_AddProp.Name = "button_AddProp";
             this.button_AddProp.Size = new System.Drawing.Size(120, 23);
-            this.button_AddProp.TabIndex = 5;
+            this.button_AddProp.TabIndex = 7;
             this.button_AddProp.Text = "Add Property";
             this.button_AddProp.UseVisualStyleBackColor = true;
             this.button_AddProp.Click += new System.EventHandler(this.button_AddProp_Click);
@@ -250,7 +250,7 @@
             this.label3.Location = new System.Drawing.Point(33, 163);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 15);
-            this.label3.TabIndex = 7;
+            this.label3.TabIndex = 5;
             this.label3.Text = "Property Name:";
             // 
             // label6
@@ -259,7 +259,7 @@
             this.label6.Location = new System.Drawing.Point(33, 103);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 15);
-            this.label6.TabIndex = 1;
+            this.label6.TabIndex = 3;
             this.label6.Text = "Type:";
             // 
             // label7
@@ -276,7 +276,7 @@
             this.textBox_NameProp.Location = new System.Drawing.Point(180, 160);
             this.textBox_NameProp.Name = "textBox_NameProp";
             this.textBox_NameProp.Size = new System.Drawing.Size(120, 23);
-            this.textBox_NameProp.TabIndex = 4;
+            this.textBox_NameProp.TabIndex = 6;
             // 
             // comboBox_AccessModProp
             // 

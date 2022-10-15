@@ -35,7 +35,7 @@ namespace UMLdiagram
                 item.DrawShadow(g);
             }
 
-            new ConnectionDrawer(g).Draw(Pens.Black, connections);
+            new ConnectionDrawer(g).Draw(connections);
 
             foreach (var item in classes)
             {

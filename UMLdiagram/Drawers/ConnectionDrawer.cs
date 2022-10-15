@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UMLdiagram.Models;
 
-namespace UMLdiagram
+namespace UMLdiagram.Drawers
 {
     public class ConnectionDrawer
     {
@@ -14,7 +15,7 @@ namespace UMLdiagram
         {
             this.g = g;
         }
-        public void Draw(Pen pen, List<ConnectionModel> connections)
+        public void Draw(List<ConnectionModel> connections)
         {
             int offset = 0;
             foreach (ConnectionModel connection in connections)
@@ -34,6 +35,10 @@ namespace UMLdiagram
                 int BottomDis = Math.Abs(Bottom1.Height - Top2.Height);
                 int[] distances = new int[] { TopDis, LeftDis, RightDis, BottomDis };
 
+                Pen pen = new Pen(Color.Black);
+                if (connection.type == ArrowDrawer.Type.classicDotdash || connection.type == ArrowDrawer.Type.triangleDotdash)
+                    pen.DashPattern = new float[] { 10, 10, 2, 10 };
+
                 if (distances.Max() == TopDis)
                     g.DrawLines(pen, new Point[] { new Point(Bottom1), new Point(Bottom1.Width, (Bottom1.Height + Top2.Height) / 2), new Point(Top2.Width, (Bottom1.Height + Top2.Height) / 2), new Point(Top2) });
                 if (distances.Max() == LeftDis)
@@ -44,13 +49,13 @@ namespace UMLdiagram
                     g.DrawLines(pen, new Point[] { new Point(Top1), new Point(Top1.Width, (Top1.Height + Bottom2.Height) / 2), new Point(Bottom2.Width, (Top1.Height + Bottom2.Height) / 2), new Point(Bottom2) });
 
                 if (distances.Max() == TopDis)
-                    new ArrowDrawer(g).Draw(connection.type, Pens.Black, Top2.Width, Top2.Height, 90);
+                    new ArrowDrawer(g).Draw(connection.type, Top2.Width, Top2.Height, 90);
                 if (distances.Max() == LeftDis)
-                    new ArrowDrawer(g).Draw(connection.type, Pens.Black, Left2.Width, Left2.Height, 0);
+                    new ArrowDrawer(g).Draw(connection.type, Left2.Width, Left2.Height, 0);
                 if (distances.Max() == RightDis)
-                    new ArrowDrawer(g).Draw(connection.type, Pens.Black, Right2.Width, Right2.Height, 180);
+                    new ArrowDrawer(g).Draw(connection.type, Right2.Width, Right2.Height, 180);
                 if (distances.Max() == BottomDis)
-                    new ArrowDrawer(g).Draw(connection.type, Pens.Black, Bottom2.Width, Bottom2.Height, 270);
+                    new ArrowDrawer(g).Draw(connection.type, Bottom2.Width, Bottom2.Height, 270);
             }
         }
     }
