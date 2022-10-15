@@ -11,14 +11,12 @@ namespace UMLdiagram
     {
         
         public Class newClass { get; set; } = new Class();
+        List<ParameterModel> parameters = new List<ParameterModel>();
         public bool isInterface { get; set; } = false;
         public void AddProp(string accessMod, string type, string name)
         {
             newClass.props.Add(new PropertyModel(accessMod, type, name));
-        }
-        public void EditProp(int selectedItemIndex)
-        {
-            throw new NotImplementedException();
+
         }
         public void RemoveProp(int selectedItemIndex)
         {
@@ -26,23 +24,20 @@ namespace UMLdiagram
         }
         public void AddMethod(string accessMod, string type, string name)
         {
-            throw new NotImplementedException();
-        }
-        public void EditMethod(int selectedItemIndex)
-        {
-            throw new NotImplementedException();
+            newClass.methods.Add(new MethodModel(accessMod, type, name, parameters));
+            parameters.Clear();
         }
         public void RemoveMethod(int selectedItemIndex)
         {
-            throw new NotImplementedException();
+            newClass.methods.RemoveAt(selectedItemIndex);
         }
         public void AddParam(string type, string name)
         {
-            throw new NotImplementedException();
+            parameters.Add(new ParameterModel(type, name));
         }
         public void RemoveParam(int selectedItemIndex)
         {
-            throw new NotImplementedException();
+            parameters.RemoveAt(selectedItemIndex);
         }
     }
 }

@@ -23,17 +23,53 @@ namespace UMLdiagram
         {
             height = 40 + 20 * props.Count + 20 * methods.Count;
 
-            DrawClassBackground(g);
+            RecalculateWidth(g);
+
+            g.FillRectangle(Brushes.LightGray, X, Y, width, height); // background
             DrawClassName(g);
             DrawProps(g);
             DrawMethods(g);
             g.DrawRectangle(Pens.Black, X, Y, width, height);
         }
-        private void DrawClassBackground(Graphics g)
+        public void RecalculateWidth(Graphics g)
+        {
+            width = 50;
+
+            Font fontClassName = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold); // font for class name
+            if (isInterface)
+                width = width < (int)g.MeasureString("<interface>   " + name, fontClassName).Width ? (int)g.MeasureString("<interface>   " + name, fontClassName).Width + 20 : width; // scale width with class name w interface
+            width = width < (int)g.MeasureString(name, fontClassName).Width ? (int)g.MeasureString(name, fontClassName).Width + 20 : width; // scale width with class name
+
+            Font fontProps = new Font(FontFamily.GenericSansSerif, 9); // font for props
+            for (int i = 0; i < props.Count; i++)
+            {
+                char accessModShort = ShortenAccessModifier(props[i].accessMod); // "public -> +" etc...
+                string propDisplay = $"{accessModShort}  {props[i].name}: {props[i].type}"; // prop string to display on class
+                width = width < (int)g.MeasureString(propDisplay, fontProps).Width ? (int)g.MeasureString(propDisplay, fontProps).Width : width; // scale width with widest prop
+            }
+
+            for (int i = 0; i < methods.Count; i++)
+            {
+                char accessModShort = ShortenAccessModifier(methods[i].accessMod); // "public -> +" etc...
+
+                string paramsDisplay = "";
+                foreach (var param in methods[i].parameters) // formating param string to insert to method display string
+                {
+                    paramsDisplay += $"{param.type} {param.name}, ";
+                }
+                if (paramsDisplay.Length != 0)
+                    paramsDisplay = paramsDisplay.Remove(paramsDisplay.Length - 2);
+                string propDisplay = $"{accessModShort} {methods[i].name}({paramsDisplay}) : {methods[i].type}"; // method string to display on class
+                width = width < (int)g.MeasureString(propDisplay, fontProps).Width ? (int)g.MeasureString(propDisplay, fontProps).Width : width; // scale width with widest method
+            }
+
+            width += 10;
+        }
+        public void DrawShadow(Graphics g)
         {
             int shadowOffset = 3;
             g.FillRectangle(Brushes.DarkGray, X + shadowOffset, Y + shadowOffset, width + shadowOffset, height + shadowOffset); // shadow
-            g.FillRectangle(Brushes.LightGray, X, Y, width, height); // background
+            
         }
         private void DrawClassName(Graphics g)
         {
@@ -48,9 +84,6 @@ namespace UMLdiagram
             {
                 g.DrawString(name, fontClassName, Brushes.Black, X, Y); // class name
             }
-            if (isInterface)
-                width = width < (int)g.MeasureString("<interface>   " + name, fontClassName).Width ? (int)g.MeasureString("<interface>   " + name, fontClassName).Width + 20 : width; // scale width with class name w interface
-            width = width < (int)g.MeasureString(name, fontClassName).Width ? (int)g.MeasureString(name, fontClassName).Width + 20 : width; // scale width with class name
         }
         private void DrawProps(Graphics g)
         {
@@ -62,8 +95,6 @@ namespace UMLdiagram
                 char accessModShort = ShortenAccessModifier(props[i].accessMod); // "public -> +" etc...
                 string propDisplay = $"{accessModShort}  {props[i].name}: {props[i].type}"; // prop string to display on class
                 g.DrawString(propDisplay, fontProps, Brushes.Black, X, Y + 20 * (i + 1)); // displaying the string
-                width = width < (int)g.MeasureString(propDisplay, fontProps).Width ? (int)g.MeasureString(propDisplay, fontProps).Width : width; // scale width with widest prop
-
             }
         }
         private void DrawMethods(Graphics g)
@@ -72,9 +103,17 @@ namespace UMLdiagram
             for (int i = 0; i < methods.Count; i++)
             {
                 char accessModShort = ShortenAccessModifier(methods[i].accessMod); // "public -> +" etc...
-                string propDisplay = $"{accessModShort} {methods[i].name}() : {methods[i].type}"; // method string to display on class
+
+                string paramsDisplay = "";
+                foreach (var param in methods[i].parameters) // formating param string to insert to method display string
+                {
+                    paramsDisplay += $"{param.type} {param.name}, ";
+                }
+                if (paramsDisplay.Length != 0)
+                    paramsDisplay = paramsDisplay.Remove(paramsDisplay.Length - 2);
+                string propDisplay = $"{accessModShort} {methods[i].name}({paramsDisplay}) : {methods[i].type}"; // method string to display on class
                 g.DrawString(propDisplay, fontProps, Brushes.Black, X, Y + 20 * props.Count + 20 * (i + 1)); // displaying the string
-                width = width < (int)g.MeasureString(propDisplay, fontProps).Width ? (int)g.MeasureString(propDisplay, fontProps).Width : width; // scale width with widest method
+                
             }
         }
         private char ShortenAccessModifier(string LongVer)

@@ -1,26 +1,29 @@
+using Microsoft.VisualBasic.Devices;
 using System.Diagnostics;
+using System.Threading;
 
 namespace UMLdiagram
 {
     public partial class Form1 : Form
     {
         public Diagram diagram { get; set; }
+        public ConnectionManager connectionManager { get; set; }
         private Class? objSelected { get; set; }
         private bool isMoved { get; set; }
         private int relMousePosToObjX { get; set; }
         private int relMousePosToObjY { get; set; }
-
+        private bool connectSelectMode { get; set; }
         public Form1()
         {
             InitializeComponent();
             diagram = new Diagram() { winWidth = this.pictureBox1.Width, winHeight = this.pictureBox1.Height };
+            connectionManager = new ConnectionManager();
             isMoved = false;
 
             Class class1 = new Class() { name = "test", X = 20, Y = 50 };
             Class class2 = new Class() { name = "test2", X = 200, Y = 50 };
             diagram.AddClass(class1);
             diagram.AddClass(class2);
-            diagram.AddConnection(class1, class2);
         }
         private void button_AddClass_Click(object sender, EventArgs e)
         {
@@ -52,10 +55,19 @@ namespace UMLdiagram
             objSelected = diagram.CheckObjOnMouse(mouseX, mouseY);
             if (objSelected != null)
             {
-                isMoved = true;
-                relMousePosToObjX = mouseX - objSelected.X;
-                relMousePosToObjY = mouseY - objSelected.Y;
+                if (!connectSelectMode)
+                {
+                        isMoved = true;
+                        relMousePosToObjX = mouseX - objSelected.X;
+                        relMousePosToObjY = mouseY - objSelected.Y;
+                  
+                }
+                else
+                {
+                    connectSelectMode = connectionManager.AddToConnection(objSelected);
+                }
             }
+            
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -117,7 +129,8 @@ namespace UMLdiagram
 
         private void button_Connect_Click(object sender, EventArgs e)
         {
-
+            connectSelectMode = true;
+            diagram.SetConnection(connectionManager.connections);
         }
     }
 }

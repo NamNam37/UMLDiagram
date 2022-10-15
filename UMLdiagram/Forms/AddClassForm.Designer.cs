@@ -80,7 +80,7 @@
             this.button_cancel.Location = new System.Drawing.Point(527, 576);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_cancel.TabIndex = 13;
+            this.button_cancel.TabIndex = 5;
             this.button_cancel.Text = "Cancel";
             this.button_cancel.UseVisualStyleBackColor = true;
             this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
@@ -90,7 +90,7 @@
             this.button_confirm.Location = new System.Drawing.Point(627, 576);
             this.button_confirm.Name = "button_confirm";
             this.button_confirm.Size = new System.Drawing.Size(75, 23);
-            this.button_confirm.TabIndex = 14;
+            this.button_confirm.TabIndex = 6;
             this.button_confirm.Text = "Confirm";
             this.button_confirm.UseVisualStyleBackColor = true;
             this.button_confirm.Click += new System.EventHandler(this.button_confirm_Click);
@@ -110,6 +110,7 @@
             this.textBox_className.Name = "textBox_className";
             this.textBox_className.Size = new System.Drawing.Size(100, 23);
             this.textBox_className.TabIndex = 1;
+            this.textBox_className.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_NotEmpty_Validating);
             // 
             // label5
             // 
@@ -117,7 +118,7 @@
             this.label5.Location = new System.Drawing.Point(275, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 15);
-            this.label5.TabIndex = 6;
+            this.label5.TabIndex = 2;
             this.label5.Text = "Is Interface?";
             // 
             // checkBox_interface
@@ -126,7 +127,7 @@
             this.checkBox_interface.Location = new System.Drawing.Point(368, 20);
             this.checkBox_interface.Name = "checkBox_interface";
             this.checkBox_interface.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_interface.TabIndex = 7;
+            this.checkBox_interface.TabIndex = 3;
             this.checkBox_interface.UseVisualStyleBackColor = true;
             this.checkBox_interface.CheckedChanged += new System.EventHandler(this.checkBox_interface_CheckedChanged);
             // 
@@ -142,7 +143,7 @@
             this.label2.Location = new System.Drawing.Point(300, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 28);
-            this.label2.TabIndex = 16;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Methods";
             // 
             // button_RemoveMethod
@@ -150,7 +151,7 @@
             this.button_RemoveMethod.Location = new System.Drawing.Point(535, 450);
             this.button_RemoveMethod.Name = "button_RemoveMethod";
             this.button_RemoveMethod.Size = new System.Drawing.Size(115, 23);
-            this.button_RemoveMethod.TabIndex = 20;
+            this.button_RemoveMethod.TabIndex = 4;
             this.button_RemoveMethod.Text = "Remove Method";
             this.button_RemoveMethod.UseVisualStyleBackColor = true;
             this.button_RemoveMethod.Click += new System.EventHandler(this.button_RemoveMethod_Click);
@@ -160,7 +161,7 @@
             this.button_RemoveProp.Location = new System.Drawing.Point(535, 450);
             this.button_RemoveProp.Name = "button_RemoveProp";
             this.button_RemoveProp.Size = new System.Drawing.Size(115, 23);
-            this.button_RemoveProp.TabIndex = 19;
+            this.button_RemoveProp.TabIndex = 10;
             this.button_RemoveProp.Text = "Remove Property";
             this.button_RemoveProp.UseVisualStyleBackColor = true;
             this.button_RemoveProp.Click += new System.EventHandler(this.button_RemoveProp_Click);
@@ -172,7 +173,7 @@
             this.label1.Location = new System.Drawing.Point(300, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 28);
-            this.label1.TabIndex = 15;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Properties";
             // 
             // tabControl1
@@ -184,7 +185,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(710, 521);
-            this.tabControl1.TabIndex = 21;
+            this.tabControl1.TabIndex = 4;
             // 
             // Properties
             // 
@@ -212,7 +213,7 @@
             this.button_EditProp.Location = new System.Drawing.Point(400, 450);
             this.button_EditProp.Name = "button_EditProp";
             this.button_EditProp.Size = new System.Drawing.Size(115, 23);
-            this.button_EditProp.TabIndex = 32;
+            this.button_EditProp.TabIndex = 9;
             this.button_EditProp.Text = "Edit Property";
             this.button_EditProp.UseVisualStyleBackColor = true;
             this.button_EditProp.Click += new System.EventHandler(this.button_EditProp_Click);
@@ -224,21 +225,21 @@
             this.listBox_Props.Location = new System.Drawing.Point(400, 40);
             this.listBox_Props.Name = "listBox_Props";
             this.listBox_Props.Size = new System.Drawing.Size(250, 394);
-            this.listBox_Props.TabIndex = 31;
+            this.listBox_Props.TabIndex = 6;
             // 
             // textBox_TypeProp
             // 
             this.textBox_TypeProp.Location = new System.Drawing.Point(180, 100);
             this.textBox_TypeProp.Name = "textBox_TypeProp";
             this.textBox_TypeProp.Size = new System.Drawing.Size(120, 23);
-            this.textBox_TypeProp.TabIndex = 30;
+            this.textBox_TypeProp.TabIndex = 2;
             // 
             // button_AddProp
             // 
             this.button_AddProp.Location = new System.Drawing.Point(33, 220);
             this.button_AddProp.Name = "button_AddProp";
             this.button_AddProp.Size = new System.Drawing.Size(120, 23);
-            this.button_AddProp.TabIndex = 26;
+            this.button_AddProp.TabIndex = 5;
             this.button_AddProp.Text = "Add Property";
             this.button_AddProp.UseVisualStyleBackColor = true;
             this.button_AddProp.Click += new System.EventHandler(this.button_AddProp_Click);
@@ -249,7 +250,7 @@
             this.label3.Location = new System.Drawing.Point(33, 163);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 15);
-            this.label3.TabIndex = 24;
+            this.label3.TabIndex = 7;
             this.label3.Text = "Property Name:";
             // 
             // label6
@@ -258,7 +259,7 @@
             this.label6.Location = new System.Drawing.Point(33, 103);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 15);
-            this.label6.TabIndex = 22;
+            this.label6.TabIndex = 1;
             this.label6.Text = "Type:";
             // 
             // label7
@@ -267,7 +268,7 @@
             this.label7.Location = new System.Drawing.Point(33, 43);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 15);
-            this.label7.TabIndex = 20;
+            this.label7.TabIndex = 1;
             this.label7.Text = "Access Modifier:";
             // 
             // textBox_NameProp
@@ -275,7 +276,7 @@
             this.textBox_NameProp.Location = new System.Drawing.Point(180, 160);
             this.textBox_NameProp.Name = "textBox_NameProp";
             this.textBox_NameProp.Size = new System.Drawing.Size(120, 23);
-            this.textBox_NameProp.TabIndex = 25;
+            this.textBox_NameProp.TabIndex = 4;
             // 
             // comboBox_AccessModProp
             // 
@@ -288,7 +289,7 @@
             this.comboBox_AccessModProp.Location = new System.Drawing.Point(180, 40);
             this.comboBox_AccessModProp.Name = "comboBox_AccessModProp";
             this.comboBox_AccessModProp.Size = new System.Drawing.Size(120, 23);
-            this.comboBox_AccessModProp.TabIndex = 21;
+            this.comboBox_AccessModProp.TabIndex = 2;
             // 
             // tabPage2
             // 
@@ -310,7 +311,7 @@
             this.button_EditMethod.Location = new System.Drawing.Point(400, 450);
             this.button_EditMethod.Name = "button_EditMethod";
             this.button_EditMethod.Size = new System.Drawing.Size(115, 23);
-            this.button_EditMethod.TabIndex = 37;
+            this.button_EditMethod.TabIndex = 3;
             this.button_EditMethod.Text = "Edit Method";
             this.button_EditMethod.UseVisualStyleBackColor = true;
             this.button_EditMethod.Click += new System.EventHandler(this.button_EditMethod_Click);
@@ -333,7 +334,7 @@
             this.groupBox1.Location = new System.Drawing.Point(6, 34);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(322, 459);
-            this.groupBox1.TabIndex = 36;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add New Method";
             // 
@@ -343,7 +344,7 @@
             this.label11.Location = new System.Drawing.Point(28, 52);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(94, 15);
-            this.label11.TabIndex = 21;
+            this.label11.TabIndex = 0;
             this.label11.Text = "Access Modifier:";
             // 
             // button_RemoveParam
@@ -351,7 +352,7 @@
             this.button_RemoveParam.Location = new System.Drawing.Point(173, 364);
             this.button_RemoveParam.Name = "button_RemoveParam";
             this.button_RemoveParam.Size = new System.Drawing.Size(120, 23);
-            this.button_RemoveParam.TabIndex = 35;
+            this.button_RemoveParam.TabIndex = 11;
             this.button_RemoveParam.Text = "Remove Parameter";
             this.button_RemoveParam.UseVisualStyleBackColor = true;
             this.button_RemoveParam.Click += new System.EventHandler(this.button_RemoveParam_Click);
@@ -367,7 +368,7 @@
             this.comboBox_AccessModMethod.Location = new System.Drawing.Point(173, 49);
             this.comboBox_AccessModMethod.Name = "comboBox_AccessModMethod";
             this.comboBox_AccessModMethod.Size = new System.Drawing.Size(120, 23);
-            this.comboBox_AccessModMethod.TabIndex = 22;
+            this.comboBox_AccessModMethod.TabIndex = 1;
             // 
             // listBox_Params
             // 
@@ -376,14 +377,14 @@
             this.listBox_Params.Location = new System.Drawing.Point(173, 237);
             this.listBox_Params.Name = "listBox_Params";
             this.listBox_Params.Size = new System.Drawing.Size(120, 109);
-            this.listBox_Params.TabIndex = 34;
+            this.listBox_Params.TabIndex = 10;
             // 
             // textBox_NameMethod
             // 
             this.textBox_NameMethod.Location = new System.Drawing.Point(173, 155);
             this.textBox_NameMethod.Name = "textBox_NameMethod";
             this.textBox_NameMethod.Size = new System.Drawing.Size(120, 23);
-            this.textBox_NameMethod.TabIndex = 25;
+            this.textBox_NameMethod.TabIndex = 5;
             // 
             // label10
             // 
@@ -391,7 +392,7 @@
             this.label10.Location = new System.Drawing.Point(28, 106);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 15);
-            this.label10.TabIndex = 23;
+            this.label10.TabIndex = 2;
             this.label10.Text = "Return Type:";
             // 
             // textBox_NameParam
@@ -400,7 +401,7 @@
             this.textBox_NameParam.Name = "textBox_NameParam";
             this.textBox_NameParam.PlaceholderText = "Name";
             this.textBox_NameParam.Size = new System.Drawing.Size(114, 23);
-            this.textBox_NameParam.TabIndex = 32;
+            this.textBox_NameParam.TabIndex = 8;
             // 
             // label9
             // 
@@ -408,7 +409,7 @@
             this.label9.Location = new System.Drawing.Point(28, 158);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 15);
-            this.label9.TabIndex = 24;
+            this.label9.TabIndex = 4;
             this.label9.Text = "Method Name:";
             // 
             // textBox_TypeParam
@@ -417,14 +418,14 @@
             this.textBox_TypeParam.Name = "textBox_TypeParam";
             this.textBox_TypeParam.PlaceholderText = "Type";
             this.textBox_TypeParam.Size = new System.Drawing.Size(114, 23);
-            this.textBox_TypeParam.TabIndex = 31;
+            this.textBox_TypeParam.TabIndex = 7;
             // 
             // button_AddMethod
             // 
             this.button_AddMethod.Location = new System.Drawing.Point(173, 424);
             this.button_AddMethod.Name = "button_AddMethod";
             this.button_AddMethod.Size = new System.Drawing.Size(120, 23);
-            this.button_AddMethod.TabIndex = 28;
+            this.button_AddMethod.TabIndex = 12;
             this.button_AddMethod.Text = "Add Method";
             this.button_AddMethod.UseVisualStyleBackColor = true;
             this.button_AddMethod.Click += new System.EventHandler(this.button_AddMethod_Click);
@@ -434,7 +435,7 @@
             this.button_AddParam.Location = new System.Drawing.Point(28, 323);
             this.button_AddParam.Name = "button_AddParam";
             this.button_AddParam.Size = new System.Drawing.Size(114, 23);
-            this.button_AddParam.TabIndex = 30;
+            this.button_AddParam.TabIndex = 9;
             this.button_AddParam.Text = "Add Parameter";
             this.button_AddParam.UseVisualStyleBackColor = true;
             this.button_AddParam.Click += new System.EventHandler(this.button_AddParam_Click);
@@ -445,7 +446,7 @@
             this.label8.Location = new System.Drawing.Point(28, 206);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(114, 15);
-            this.label8.TabIndex = 26;
+            this.label8.TabIndex = 6;
             this.label8.Text = "Method Parameters:";
             // 
             // textBox_ReturnTypeMethod
@@ -453,7 +454,7 @@
             this.textBox_ReturnTypeMethod.Location = new System.Drawing.Point(173, 103);
             this.textBox_ReturnTypeMethod.Name = "textBox_ReturnTypeMethod";
             this.textBox_ReturnTypeMethod.Size = new System.Drawing.Size(120, 23);
-            this.textBox_ReturnTypeMethod.TabIndex = 29;
+            this.textBox_ReturnTypeMethod.TabIndex = 3;
             // 
             // listBox_Methods
             // 
@@ -462,7 +463,7 @@
             this.listBox_Methods.Location = new System.Drawing.Point(400, 40);
             this.listBox_Methods.Name = "listBox_Methods";
             this.listBox_Methods.Size = new System.Drawing.Size(250, 394);
-            this.listBox_Methods.TabIndex = 33;
+            this.listBox_Methods.TabIndex = 2;
             // 
             // AddClassForm
             // 

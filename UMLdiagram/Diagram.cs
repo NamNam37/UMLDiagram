@@ -19,9 +19,9 @@ namespace UMLdiagram
         {
             classes.Add(addClass);
         }
-        public void AddConnection(Class class1, Class class2)
+        public void SetConnection(List<ConnectionModel> connections)
         {
-            connections.Add(new ConnectionModel(class1, class2));
+            this.connections = connections;
         }
         public void RemoveClass(Class objSelected)
         {
@@ -32,11 +32,19 @@ namespace UMLdiagram
         {
             foreach (var item in classes)
             {
+                item.DrawShadow(g);
+            }
+
+            new ConnectionDrawer(g).Draw(Pens.Black, connections);
+
+            foreach (var item in classes)
+            {
                 item.Draw(g);
 
                 if (objSelected != null)
                     objSelected.DrawSelection(g);
             }
+            
         }
         public void Move(Class objSelected, int mouseX, int mouseY, int relMousePosToObjX, int relMousePosToObjY)
         {
@@ -65,18 +73,6 @@ namespace UMLdiagram
                     return item;
                 }
             }
-            /*foreach (var item in classes)
-            {
-                int itemEndX = item.X + item.width;
-                int itemEndY = item.Y + item.height;
-                if (mouseX >= item.X & mouseX <= itemEndX & mouseY >= item.Y & mouseY <= itemEndY)
-                {
-                    classes.Remove(item);
-                    classes.Add(item);
-                    return item;
-                }
-                
-            }*/
             return null;
         }
     }

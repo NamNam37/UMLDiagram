@@ -11,13 +11,16 @@ namespace UMLdiagram.Models
         public string accessMod { get; set; }
         public string type { get; set; }
         public string name { get; set; }
-        public List<ParameterModel> parameters { get; set; }
-        public MethodModel(string accessMod, string type, string name, List<ParameterModel> paramaters)
+        public List<ParameterModel> parameters { get; set; } = new List<ParameterModel>();
+        public MethodModel(string accessMod, string type, string name, List<ParameterModel> parameters)
         {
             this.accessMod = accessMod;
             this.type = type;
             this.name = name;
-            this.parameters = paramaters;
+            foreach (var item in parameters)
+            {
+                this.parameters.Add(item);
+            }
         }
     }
 }

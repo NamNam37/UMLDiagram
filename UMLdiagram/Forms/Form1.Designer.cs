@@ -86,7 +86,7 @@
             this.button_ClearPicbox.Location = new System.Drawing.Point(862, 524);
             this.button_ClearPicbox.Name = "button_ClearPicbox";
             this.button_ClearPicbox.Size = new System.Drawing.Size(110, 25);
-            this.button_ClearPicbox.TabIndex = 3;
+            this.button_ClearPicbox.TabIndex = 4;
             this.button_ClearPicbox.Text = "Clear ALL";
             this.button_ClearPicbox.UseVisualStyleBackColor = false;
             this.button_ClearPicbox.Click += new System.EventHandler(this.button_ClearPicbox_Click);
@@ -96,7 +96,7 @@
             this.button_Connect.Location = new System.Drawing.Point(360, 524);
             this.button_Connect.Name = "button_Connect";
             this.button_Connect.Size = new System.Drawing.Size(110, 25);
-            this.button_Connect.TabIndex = 4;
+            this.button_Connect.TabIndex = 3;
             this.button_Connect.Text = "Connect Classes";
             this.button_Connect.UseVisualStyleBackColor = true;
             this.button_Connect.Click += new System.EventHandler(this.button_Connect_Click);
