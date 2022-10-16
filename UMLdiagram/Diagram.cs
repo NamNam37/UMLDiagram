@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UMLdiagram.Drawers;
 using UMLdiagram.Models;
 
 namespace UMLdiagram
@@ -74,6 +75,11 @@ namespace UMLdiagram
                 }
             }
             return null;
+        }
+
+        public void CheckConnectionOnMouse(int x, int y)
+        {
+            new ConnectionDrawer().CheckObj(connections, x, y);
         }
     }
 }

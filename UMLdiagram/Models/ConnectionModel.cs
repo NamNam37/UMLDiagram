@@ -12,6 +12,8 @@ namespace UMLdiagram.Models
         public Class class1 { get; set; }
         public Class class2 { get; set; }
         public ArrowDrawer.Type type { get; set; }
+        public int class1Count { get; set; } = 0;
+        public int class2Count { get; set; }= 0;
         public ConnectionModel(Class class1, Class class2, ArrowDrawer.Type type)
         {
             this.class1 = class1;

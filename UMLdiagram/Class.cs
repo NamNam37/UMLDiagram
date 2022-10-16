@@ -19,6 +19,10 @@ namespace UMLdiagram
         public bool isInterface { get; set; } = false;
         public List<PropertyModel> props { get; set; } = new List<PropertyModel>();
         public List<MethodModel> methods { get; set; } = new List<MethodModel>();
+        public int topConnections { get; set; } = 0;
+        public int leftConnections { get; set; } = 0;
+        public int rightConnections { get; set; } = 0;
+        public int bottomConnections { get; set; } = 0;
         public void Draw(Graphics g)
         {
             height = 40 + 20 * props.Count + 20 * methods.Count;

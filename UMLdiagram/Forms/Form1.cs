@@ -110,6 +110,8 @@ namespace UMLdiagram
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
+            diagram.CheckConnectionOnMouse(e.X, e.Y);
+
             pictureBox1.Refresh();
 
             if (isMoved)
