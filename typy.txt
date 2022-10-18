@@ -1,0 +1,7 @@
+cara - asociace
+sipka - jednosmerna-asociace
+trojuhelnik - dìdiènost generalizace
+cerchovana sipka a trojuhelnik - realizace
+cerchovana cara a sipka - dependence abstrakce substituce pouziti
+prazdnej diamant - agregace
+diamant - kompozice

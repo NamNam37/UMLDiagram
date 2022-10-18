@@ -79,7 +79,11 @@ namespace UMLdiagram
 
         public void CheckConnectionOnMouse(int x, int y)
         {
-            new ConnectionDrawer().CheckObj(connections, x, y);
+            ConnectionModel? connection = new ConnectionDrawer().CheckObj(connections, x, y);
+            if (connection != null)
+            {
+                connections.Remove(connection);
+            }
         }
     }
 }

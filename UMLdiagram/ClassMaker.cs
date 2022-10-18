@@ -16,7 +16,6 @@ namespace UMLdiagram
         public void AddProp(string accessMod, string type, string name)
         {
             newClass.props.Add(new PropertyModel(accessMod, type, name));
-
         }
         public void RemoveProp(int selectedItemIndex)
         {

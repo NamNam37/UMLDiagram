@@ -14,6 +14,7 @@ namespace UMLdiagram
         private int relMousePosToObjX { get; set; }
         private int relMousePosToObjY { get; set; }
         private bool connectSelectMode { get; set; }
+        private bool connectRemoveMode { get; set; } = false;
         public Form1()
         {
             InitializeComponent();
@@ -110,8 +111,8 @@ namespace UMLdiagram
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            diagram.CheckConnectionOnMouse(e.X, e.Y);
-
+            if (connectRemoveMode)
+                diagram.CheckConnectionOnMouse(e.X, e.Y);
             pictureBox1.Refresh();
 
             if (isMoved)
@@ -170,7 +171,7 @@ namespace UMLdiagram
 
         private void button_RemoveConnection_Click(object sender, EventArgs e)
         {
-
+            connectRemoveMode = !connectRemoveMode;
         }
         /*
 cara - asociace

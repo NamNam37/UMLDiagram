@@ -74,5 +74,3 @@ F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\refint\UMLdiagram.d
 F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.pdb
 F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.genruntimeconfig.cache
 F:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\ref\UMLdiagram.dll
-E:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.AddMethodForm.resources
-E:\UMLdiagram\UMLdiagram\UMLdiagram\obj\Debug\net6.0-windows\UMLdiagram.AddPropsForm.resources
