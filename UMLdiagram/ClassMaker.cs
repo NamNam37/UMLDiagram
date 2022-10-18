@@ -10,7 +10,7 @@ namespace UMLdiagram
     public class ClassMaker
     {
         
-        public Class newClass { get; set; } = new Class();
+        public ClassModel newClass { get; set; } = new ClassModel("", false);
         List<ParameterModel> parameters = new List<ParameterModel>();
         public bool isInterface { get; set; } = false;
         public void AddProp(string accessMod, string type, string name)

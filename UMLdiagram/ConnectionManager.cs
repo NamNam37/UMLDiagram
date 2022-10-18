@@ -10,10 +10,10 @@ namespace UMLdiagram
 {
     public class ConnectionManager
     {
-        private Class? selectedClass1 { get; set; }
-        private Class? selectedClass2 { get; set; }
+        private ClassModel? selectedClass1 { get; set; }
+        private ClassModel? selectedClass2 { get; set; }
         public List<ConnectionModel> connections { get; set; } = new List<ConnectionModel>();
-        public bool AddToConnection(Class objSelected, ArrowDrawer.Type type)
+        public bool AddToConnection(ClassModel objSelected, ArrowDrawer.Type type)
         {
             if (selectedClass1 == null)
             {

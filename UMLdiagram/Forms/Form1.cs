@@ -2,28 +2,29 @@
 using System.Diagnostics;
 using System.Threading;
 using UMLdiagram.Drawers;
+using UMLdiagram.Models;
 
 namespace UMLdiagram
 {
     public partial class Form1 : Form
     {
         public Diagram diagram { get; set; }
-        public ConnectionManager connectionManager { get; set; }
-        private Class? objSelected { get; set; }
-        private bool isMoved { get; set; }
+        public ConnectionManager connectionManager { get; set; } = new ConnectionManager();
+        private ClassModel? objSelected { get; set; }
+        private bool isMoved { get; set; } = false;
         private int relMousePosToObjX { get; set; }
         private int relMousePosToObjY { get; set; }
         private bool connectSelectMode { get; set; }
         private bool connectRemoveMode { get; set; } = false;
+        private bool leftClick { get; set; } = false;
         public Form1()
         {
             InitializeComponent();
             diagram = new Diagram() { winWidth = this.pictureBox1.Width, winHeight = this.pictureBox1.Height };
-            connectionManager = new ConnectionManager();
-            isMoved = false;
+
             comboBox_ArrowType.Text = "Association";
-            Class class1 = new Class() { name = "test", X = 20, Y = 50 };
-            Class class2 = new Class() { name = "test2", X = 200, Y = 50 };
+            ClassModel class1 = new ClassModel("test", false) { X = 20, Y = 50 };
+            ClassModel class2 = new ClassModel("test2", false) { X = 200, Y = 50 };
             diagram.AddClass(class1);
             diagram.AddClass(class2);
         }
@@ -54,6 +55,7 @@ namespace UMLdiagram
         }
         private void LeftClick(int mouseX, int mouseY)
         {
+            leftClick = true;
             objSelected = diagram.CheckObjOnMouse(mouseX, mouseY);
             if (objSelected != null)
             {
@@ -106,13 +108,14 @@ namespace UMLdiagram
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
+            leftClick = false;
             isMoved = false;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (connectRemoveMode)
-                diagram.CheckConnectionOnMouse(e.X, e.Y);
+            if (connectRemoveMode && leftClick)
+                diagram.RemoveConnectionOnMouse(e.X, e.Y);
             pictureBox1.Refresh();
 
             if (isMoved)
@@ -130,7 +133,7 @@ namespace UMLdiagram
 
         private void pictureBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Class? editedClass = diagram.CheckObjOnMouse(e.X, e.Y);
+            ClassModel? editedClass = diagram.CheckObjOnMouse(e.X, e.Y);
             if (editedClass != null)
             {
                 EditClass(editedClass);
@@ -144,7 +147,7 @@ namespace UMLdiagram
                 EditClass(objSelected);
             }
         }
-        private void EditClass(Class editedClass)
+        private void EditClass(ClassModel editedClass)
         {
             AddClassForm addClassForm = new AddClassForm(editedClass);
             addClassForm.ShowDialog();

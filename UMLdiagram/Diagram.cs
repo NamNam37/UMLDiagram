@@ -13,10 +13,10 @@ namespace UMLdiagram
     {
         public int winWidth { get; set; }
         public int winHeight { get; set; }
-        public List<Class> classes = new List<Class>();
+        public List<ClassModel> classes = new List<ClassModel>();
         public List<ConnectionModel> connections = new List<ConnectionModel>();
 
-        public void AddClass(Class addClass)
+        public void AddClass(ClassModel addClass)
         {
             classes.Add(addClass);
         }
@@ -24,43 +24,43 @@ namespace UMLdiagram
         {
             this.connections = connections;
         }
-        public void RemoveClass(Class objSelected)
+        public void RemoveClass(ClassModel objSelected)
         {
             classes.Remove(objSelected);
             
         }
-        public void Draw(Graphics g, Class objSelected)
+        public void Draw(Graphics g, ClassModel objSelected)
         {
             foreach (var item in classes)
             {
-                item.DrawShadow(g);
+                new ClassDrawer(item).DrawShadow(g);
             }
 
             new ConnectionDrawer(g).Draw(connections);
 
             foreach (var item in classes)
             {
-                item.Draw(g);
+                new ClassDrawer(item).Draw(g);
 
                 if (objSelected != null)
-                    objSelected.DrawSelection(g);
+                    new ClassDrawer(objSelected).DrawSelection(g);
             }
             
         }
-        public void Move(Class objSelected, int mouseX, int mouseY, int relMousePosToObjX, int relMousePosToObjY)
+        public void Move(ClassModel objSelected, int mouseX, int mouseY, int relMousePosToObjX, int relMousePosToObjY)
         {
-            objSelected.Move(mouseX, mouseY, relMousePosToObjX, relMousePosToObjY);
+            new ClassDrawer(objSelected).Move(mouseX, mouseY, relMousePosToObjX, relMousePosToObjY);
         }
-        public void Modify(Class objSelected, Class newClass)
+        public void Modify(ClassModel objSelected, ClassModel newClass)
         {
             classes.Remove(objSelected);
             classes.Add(newClass);
         }
         public void DeleteAll()
         {
-            classes = new List<Class>();
+            classes = new List<ClassModel>();
         }
-        public Class? CheckObjOnMouse(int mouseX, int mouseY)
+        public ClassModel? CheckObjOnMouse(int mouseX, int mouseY)
         {
             for (int i = classes.Count - 1; i >= 0; i--)
             {
@@ -77,7 +77,7 @@ namespace UMLdiagram
             return null;
         }
 
-        public void CheckConnectionOnMouse(int x, int y)
+        public void RemoveConnectionOnMouse(int x, int y)
         {
             ConnectionModel? connection = new ConnectionDrawer().CheckObj(connections, x, y);
             if (connection != null)

@@ -20,16 +20,10 @@ namespace UMLdiagram.Models
         public int leftConnections { get; set; } = 0;
         public int rightConnections { get; set; } = 0;
         public int bottomConnections { get; set; } = 0;
-        public ClassModel(int x, int y, int width, int height, string name, bool isInterface, List<PropertyModel> props, List<MethodModel> methods)
+        public ClassModel(string name, bool isInterface)
         {
-            X = x;
-            Y = y;
-            this.width = width;
-            this.height = height;
             this.name = name;
             this.isInterface = isInterface;
-            this.props = props;
-            this.methods = methods;
         }
     }
 }

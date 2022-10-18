@@ -26,7 +26,7 @@ namespace UMLdiagram
             comboBox_AccessModProp.Text = "private";
             comboBox_AccessModMethod.Text = "private";
         }
-        public AddClassForm(Class editedClass)
+        public AddClassForm(ClassModel editedClass)
         {
             InitializeComponent();
             comboBox_AccessModProp.Text = "private";
