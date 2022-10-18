@@ -36,6 +36,7 @@
             this.button_Connect = new System.Windows.Forms.Button();
             this.comboBox_ArrowType = new System.Windows.Forms.ComboBox();
             this.button_RemoveConnection = new System.Windows.Forms.Button();
+            this.label_ModeDisplay = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,11 +135,21 @@
             this.button_RemoveConnection.UseVisualStyleBackColor = true;
             this.button_RemoveConnection.Click += new System.EventHandler(this.button_RemoveConnection_Click);
             // 
+            // label_ModeDisplay
+            // 
+            this.label_ModeDisplay.AutoSize = true;
+            this.label_ModeDisplay.Location = new System.Drawing.Point(360, 80);
+            this.label_ModeDisplay.MinimumSize = new System.Drawing.Size(110, 0);
+            this.label_ModeDisplay.Name = "label_ModeDisplay";
+            this.label_ModeDisplay.Size = new System.Drawing.Size(110, 15);
+            this.label_ModeDisplay.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.label_ModeDisplay);
             this.Controls.Add(this.button_RemoveConnection);
             this.Controls.Add(this.comboBox_ArrowType);
             this.Controls.Add(this.button_Connect);
@@ -151,6 +162,7 @@
             this.Text = "UML Diagram Maker";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -164,5 +176,6 @@
         private Button button_Connect;
         private ComboBox comboBox_ArrowType;
         private Button button_RemoveConnection;
+        private Label label_ModeDisplay;
     }
 }

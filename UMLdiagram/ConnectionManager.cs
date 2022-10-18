@@ -30,5 +30,16 @@ namespace UMLdiagram
             }
             
         }
+        public string GetConnectionRequirementReturn()
+        {
+            if (selectedClass1 == null)
+            {
+                return "first class";
+            }
+            else 
+            {
+                return "second class";
+            }
+        }
     }
 }

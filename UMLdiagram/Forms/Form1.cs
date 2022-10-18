@@ -68,7 +68,14 @@ namespace UMLdiagram
                 }
                 else
                 {
+                    label_ModeDisplay.ForeColor = Color.Black;
                     connectSelectMode = connectionManager.AddToConnection(objSelected, ConvertArrTypeToEnum());
+                    label_ModeDisplay.Text = $"Please select the {connectionManager.GetConnectionRequirementReturn()}.";
+                    diagram.SetConnection(connectionManager.connections);
+                    if (connectionManager.GetConnectionRequirementReturn() == "first class")
+                    {
+                        label_ModeDisplay.Text = "";
+                    }
                 }
             }
             
@@ -168,13 +175,35 @@ namespace UMLdiagram
 
         private void button_Connect_Click(object sender, EventArgs e)
         {
-            connectSelectMode = true;
-            diagram.SetConnection(connectionManager.connections);
+            connectSelectMode = !connectSelectMode;
+
+            if (connectSelectMode)
+            {
+                connectRemoveMode = false;
+                label_ModeDisplay.ForeColor = Color.Black;
+                label_ModeDisplay.Text = $"Please select the {connectionManager.GetConnectionRequirementReturn()}.";
+            } else
+            {
+                label_ModeDisplay.Text = "";
+                connectionManager = new ConnectionManager();
+            }
+            
         }
 
         private void button_RemoveConnection_Click(object sender, EventArgs e)
         {
             connectRemoveMode = !connectRemoveMode;
+            if (connectRemoveMode)
+            {
+                connectSelectMode = false;
+                connectionManager = new ConnectionManager();
+                label_ModeDisplay.Text = "\"Remove Connection\" mode ON.";
+                label_ModeDisplay.ForeColor = Color.Red;
+            } else
+            {
+                label_ModeDisplay.Text = "";
+                label_ModeDisplay.ForeColor = Color.Black;
+            }
         }
         /*
 cara - asociace
