@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "XR9LdgBhmugXdyDX7EK1Mgba+VT1Ad9X4oGZ4LqkS+1uUDagWmcA1Bkcc+3caGid+hhse0umrMplRG5Op8nsSg==",
+  "dgSpecHash": "78+CFgibiFlPwBmsgKp14sQP9qI1xtv+SzWntlUD8jvL5crBDF/8BaFCAlXFFhHKte5RIZa9fCE60MlCcxPQtg==",
   "success": true,
   "projectFilePath": "F:\\UMLdiagram\\UMLdiagram\\UMLdiagram\\UMLdiagram.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\david\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

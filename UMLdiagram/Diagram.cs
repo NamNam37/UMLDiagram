@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UMLdiagram.Drawers;
 using UMLdiagram.Models;
+using UMLdiagram.Utilities;
 
 namespace UMLdiagram
 {
@@ -20,14 +22,37 @@ namespace UMLdiagram
         {
             classes.Add(addClass);
         }
+        public void EditClass(ClassModel editedClass)
+        {
+            AddClassForm addClassForm = new AddClassForm(editedClass);
+            addClassForm.ShowDialog();
+            classes.Remove(editedClass);
+            classes.Add(addClassForm.classMaker.newClass);
+        }
         public void SetConnection(List<ConnectionModel> connections)
         {
             this.connections = connections;
         }
-        public void RemoveClass(ClassModel objSelected)
+        public void RemoveClass(ClassModel classSelected)
         {
-            classes.Remove(objSelected);
+            classes.Remove(classSelected);
+            RemoveRelatedConnectionsToRemovedClass(classSelected);
             
+        }
+        private void RemoveRelatedConnectionsToRemovedClass(ClassModel classSelected)
+        {
+            List<ConnectionModel> connectionsToRemove = new List<ConnectionModel>();
+            foreach (ConnectionModel connection in connections)
+            {
+                if (connection.class1.name == classSelected.name || connection.class2.name == classSelected.name)
+                {
+                    connectionsToRemove.Add(connection);
+                }
+            }
+            foreach (ConnectionModel connection in connectionsToRemove)
+            {
+                connections.Remove(connection);
+            }
         }
         public void Draw(Graphics g, ClassModel objSelected)
         {
@@ -51,16 +76,12 @@ namespace UMLdiagram
         {
             new ClassDrawer(objSelected).Move(mouseX, mouseY, relMousePosToObjX, relMousePosToObjY);
         }
-        public void Modify(ClassModel objSelected, ClassModel newClass)
-        {
-            classes.Remove(objSelected);
-            classes.Add(newClass);
-        }
         public void DeleteAll()
         {
             classes = new List<ClassModel>();
+            connections = new List<ConnectionModel>();
         }
-        public ClassModel? CheckObjOnMouse(int mouseX, int mouseY)
+        public ClassModel? CheckClassOnMouse(int mouseX, int mouseY)
         {
             for (int i = classes.Count - 1; i >= 0; i--)
             {
@@ -84,6 +105,59 @@ namespace UMLdiagram
             {
                 connections.Remove(connection);
             }
+        }
+
+        public DialogResult NewClassDialog()
+        {
+            AddClassForm addClassForm = new AddClassForm();
+            addClassForm.ShowDialog();
+            if (addClassForm.DialogResult == DialogResult.OK)
+            {
+                AddClass(addClassForm.classMaker.newClass);
+                return DialogResult.OK;
+            }
+            return DialogResult.Cancel;
+        }
+
+        public void Save(string savePath)
+        {
+            JsonFileUtility jsonFileUtility = new JsonFileUtility();
+            List<object> jsonList = new List<object>() { classes, connections };
+            jsonFileUtility.SaveList(jsonList, savePath);
+        }
+
+        public void Load(string loadPath)
+        {
+            JsonFileUtility jsonFileUtility = new JsonFileUtility();
+            JArray? jsonList = jsonFileUtility.ReadList(loadPath);
+            if (jsonList != null)
+            {
+                classes = jsonList[0].ToObject<List<ClassModel>>();
+                connections = jsonList[1].ToObject<List<ConnectionModel>>();
+            }
+            JoinClassesToConnections();
+        }
+        private void JoinClassesToConnections()
+        {
+            foreach (ConnectionModel connection in connections)
+            {
+                foreach (ClassModel classModel in classes)
+                {
+                    if (connection.class1.name == classModel.name)
+                    {
+                        connection.class1 = classModel;
+                    }
+                    else if (connection.class2.name == classModel.name)
+                    {
+                        connection.class2 = classModel;
+                    }
+                }
+            }
+        }
+
+        public void GenerateCode()
+        {
+            throw new NotImplementedException();
         }
     }
 }

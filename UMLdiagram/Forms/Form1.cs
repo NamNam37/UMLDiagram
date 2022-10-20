@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic.Devices;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows.Forms;
 using UMLdiagram.Drawers;
 using UMLdiagram.Models;
 
@@ -30,13 +31,8 @@ namespace UMLdiagram
         }
         private void button_AddClass_Click(object sender, EventArgs e)
         {
-            AddClassForm addClassForm = new AddClassForm();
-            addClassForm.ShowDialog();
-            if (addClassForm.DialogResult == DialogResult.OK)
-            {
-                diagram.AddClass(addClassForm.classMaker.newClass);
+            if (diagram.NewClassDialog() == DialogResult.OK)
                 objSelected = null;
-            }
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -56,7 +52,7 @@ namespace UMLdiagram
         private void LeftClick(int mouseX, int mouseY)
         {
             leftClick = true;
-            objSelected = diagram.CheckObjOnMouse(mouseX, mouseY);
+            objSelected = diagram.CheckClassOnMouse(mouseX, mouseY);
             if (objSelected != null)
             {
                 if (!connectSelectMode)
@@ -70,9 +66,9 @@ namespace UMLdiagram
                 {
                     label_ModeDisplay.ForeColor = Color.Black;
                     connectSelectMode = connectionManager.AddToConnection(objSelected, ConvertArrTypeToEnum());
-                    label_ModeDisplay.Text = $"Please select the {connectionManager.GetConnectionRequirementReturn()}.";
+                    label_ModeDisplay.Text = $"Please select the second class.";
                     diagram.SetConnection(connectionManager.connections);
-                    if (connectionManager.GetConnectionRequirementReturn() == "first class")
+                    if (connectionManager.GetConnectionRequirementReturn() == 1)
                     {
                         label_ModeDisplay.Text = "";
                     }
@@ -140,10 +136,10 @@ namespace UMLdiagram
 
         private void pictureBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ClassModel? editedClass = diagram.CheckObjOnMouse(e.X, e.Y);
+            ClassModel? editedClass = diagram.CheckClassOnMouse(e.X, e.Y);
             if (editedClass != null)
             {
-                EditClass(editedClass);
+                diagram.EditClass(editedClass);
             }
         }
 
@@ -151,15 +147,10 @@ namespace UMLdiagram
         {
             if (objSelected != null)
             {
-                EditClass(objSelected);
+                diagram.EditClass(objSelected);
             }
         }
-        private void EditClass(ClassModel editedClass)
-        {
-            AddClassForm addClassForm = new AddClassForm(editedClass);
-            addClassForm.ShowDialog();
-            diagram.Modify(editedClass, addClassForm.classMaker.newClass);           
-        }
+        
 
         private void button_ClearPicbox_Click(object sender, EventArgs e)
         {
@@ -181,7 +172,7 @@ namespace UMLdiagram
             {
                 connectRemoveMode = false;
                 label_ModeDisplay.ForeColor = Color.Black;
-                label_ModeDisplay.Text = $"Please select the {connectionManager.GetConnectionRequirementReturn()}.";
+                label_ModeDisplay.Text = $"Please select the first.";
             } else
             {
                 label_ModeDisplay.Text = "";
@@ -205,14 +196,31 @@ namespace UMLdiagram
                 label_ModeDisplay.ForeColor = Color.Black;
             }
         }
-        /*
-cara - asociace
-sipka - jednosmerna-asociace
-trojuhelnik - dědičnost generalizace
-cerchovana sipka a trojuhelnik - realizace
-cerchovana cara a sipka - dependence abstrakce substituce pouziti
-prazdnej diamant - agregace
-diamant - kompozice
-*/
+
+        private void button_Save_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "JSON Files|*.json";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                diagram.Save(saveFileDialog.FileName);
+            }
+        }
+
+        private void button_Load_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JSON Files|*.json";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                objSelected = null;
+                diagram.Load(openFileDialog.FileName);
+            }
+        }
+
+        private void button_GenerateCode_Click(object sender, EventArgs e)
+        {
+            diagram.GenerateCode();
+        }
     }
 }

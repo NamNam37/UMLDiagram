@@ -22,7 +22,11 @@ namespace UMLdiagram
             } else
             {
                 selectedClass2 = objSelected;
-                connections.Add(new ConnectionModel(selectedClass1, selectedClass2, type));
+                if (CheckConnectionDups())
+                {
+                    connections.Add(new ConnectionModel(selectedClass1, selectedClass2, type));
+                }
+                
                 
                 selectedClass1 = null;
                 selectedClass2 = null;
@@ -30,15 +34,28 @@ namespace UMLdiagram
             }
             
         }
-        public string GetConnectionRequirementReturn()
+
+        private bool CheckConnectionDups()
+        {
+            foreach (ConnectionModel connection in connections)
+            {
+                if ((connection.class1 == selectedClass1 && connection.class2 == selectedClass2) || (connection.class1 == selectedClass2 && connection.class2 == selectedClass1))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public int GetConnectionRequirementReturn()
         {
             if (selectedClass1 == null)
             {
-                return "first class";
+                return 1;
             }
             else 
             {
-                return "second class";
+                return 2;
             }
         }
     }
